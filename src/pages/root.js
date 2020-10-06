@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
-import Overview from "./overview";
-import Grades from "./grades";
-import Labs from "./labs";
+import Overview from "./overview/overview";
+import Grades from "./grades/grades";
+import Labs from "./labs/labs";
 
 function App() {
   return (

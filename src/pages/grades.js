@@ -3,7 +3,7 @@ import React from "react";
 function Grades() {
   return (
     <main>
-      <h1>Lab</h1>
+      <h1>Grades</h1>
     </main>
   );
 }

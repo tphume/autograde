@@ -29,6 +29,9 @@ function Login({ dispatch }) {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.value)}
+            minLength={4}
+            maxLength={16}
+            required
           ></input>
         </label>
         <label>
@@ -37,6 +40,9 @@ function Login({ dispatch }) {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.value)}
+            minLength={4}
+            maxLength={16}
+            required
           ></input>
         </label>
         <label>

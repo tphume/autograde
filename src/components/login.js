@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login() {
+function Login({ dispatch }) {
   return (
     <main>
       <h1>Placeholder</h1>

@@ -1,11 +1,11 @@
 import React from "react";
 
-function Overview() {
+function Login() {
   return (
     <main>
-      <h1>Overview</h1>
+      <h1>Placeholder</h1>
     </main>
   );
 }
 
-export default Overview;
+export default Login;

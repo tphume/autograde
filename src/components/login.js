@@ -12,6 +12,7 @@ function Login({ dispatch }) {
 
     try {
       const token = await authenticate(username, password, role);
+      console.log(username);
       dispatch({ type: "LOGIN", payload: { role, username, token } });
     } catch (error) {
       // TODO: add error displaying logic
@@ -28,7 +29,7 @@ function Login({ dispatch }) {
           <input
             type="text"
             value={username}
-            onChange={(e) => setUsername(e.value)}
+            onChange={(e) => setUsername(e.target.value)}
             minLength={4}
             maxLength={16}
             required
@@ -39,7 +40,7 @@ function Login({ dispatch }) {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.value)}
+            onChange={(e) => setPassword(e.target.value)}
             minLength={4}
             maxLength={16}
             required
@@ -47,7 +48,7 @@ function Login({ dispatch }) {
         </label>
         <label>
           Role
-          <select value={role} onChange={(e) => setRole(e.value)}>
+          <select value={role} onChange={(e) => setRole(e.target.value)}>
             <option value="teacher">teacher</option>
             <option value="student">student</option>
           </select>

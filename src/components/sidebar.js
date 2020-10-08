@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+// TODO: add icons to nav items
 function SideBar() {
   return (
     <nav>

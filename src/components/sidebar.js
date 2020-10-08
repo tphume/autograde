@@ -1,9 +1,20 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function SideBar() {
   return (
     <nav>
-      <h1>Placeholder</h1>
+      <ul>
+        <li>
+          <NavLink to="/overview">Overview</NavLink>
+        </li>
+        <li>
+          <NavLink to="/grades">Grades</NavLink>
+        </li>
+        <li>
+          <NavLink to="/overview">Labs</NavLink>
+        </li>
+      </ul>
     </nav>
   );
 }

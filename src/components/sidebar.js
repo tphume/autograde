@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 // TODO: add icons to nav items
-function SideBar() {
+function SideBar({ dispatch }) {
   return (
     <nav>
       <ul>
@@ -14,6 +14,9 @@ function SideBar() {
         </li>
         <li>
           <NavLink to="/overview">Labs</NavLink>
+        </li>
+        <li>
+          <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
         </li>
       </ul>
     </nav>

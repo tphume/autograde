@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <Header username={auth.state.username} />
-      <SideBar />
+      <SideBar dispatch={auth.dispatch} />
       <Switch>
         <Route exact path="/">
           <Redirect to="/overview" />

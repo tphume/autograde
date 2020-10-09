@@ -15,9 +15,17 @@
 }
 
 .inputContainer {
+  height: 3rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+/* Container styling */
+.inputContainer {
+  background-color: #f3f4f6;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
 }
 
 /* Text Styling */
@@ -39,4 +47,16 @@
 
 .inputLabel {
   color: #566c8d;
+  font-size: 1.2rem;
+}
+
+.inputText {
+  border: none;
+  background-color: #f3f4f6;
+  font-size: 0.8rem;
+}
+
+/* Text variants */
+.inputText:focus {
+  outline: none;
 }

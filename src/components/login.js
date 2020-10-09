@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { authenticate } from "../repo/auth";
 
+import styles from "./login.module.css";
+
 function Login({ dispatch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -22,37 +24,38 @@ function Login({ dispatch }) {
 
   return (
     <main>
-      <h1>AutoGrade</h1>
+      <h1 className={styles.title}>AutoGrade</h1>
+      <h4 className={styles.subTitle}>Sign in to continue</h4>
       <form onSubmit={submitForm}>
-        <label>
-          Username
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            minLength={4}
-            maxLength={16}
-            required
-          ></input>
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            minLength={4}
-            maxLength={16}
-            required
-          ></input>
-        </label>
-        <label>
-          Role
-          <select value={role} onChange={(e) => setRole(e.target.value)}>
-            <option value="teacher">teacher</option>
-            <option value="student">student</option>
-          </select>
-        </label>
+        <label className={styles.inputLabel}>Username</label>
+        <input
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          minLength={4}
+          maxLength={16}
+          required
+          className={styles.inputText}
+        ></input>
+        <label className={styles.inputLabel}>Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          minLength={4}
+          maxLength={16}
+          required
+          className={styles.inputText}
+        ></input>
+        <label className={styles.inputLabel}>Role</label>
+        <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          className={styles.inputText}
+        >
+          <option value="teacher">teacher</option>
+          <option value="student">student</option>
+        </select>
         <input type="submit" value="Login" />
       </form>
     </main>

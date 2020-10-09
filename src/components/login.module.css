@@ -1,0 +1,19 @@
+.title,
+.subTitle,
+.inputText {
+  color: #23395a;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.subTitle,
+.inputText {
+  font-weight: 600;
+}
+
+.inputLabel {
+  color: #566c8d;
+}

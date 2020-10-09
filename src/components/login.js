@@ -22,7 +22,7 @@ function Login({ dispatch }) {
 
   return (
     <main>
-      <h1>Placeholder</h1>
+      <h1>AutoGrade</h1>
       <form onSubmit={submitForm}>
         <label>
           Username

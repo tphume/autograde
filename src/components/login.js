@@ -52,15 +52,16 @@ function Login({ dispatch }) {
               className={styles.inputText}
             ></input>
           </div>
-          <label className={styles.inputLabel}>Role</label>
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            className={styles.inputText}
-          >
-            <option value="teacher">teacher</option>
-            <option value="student">student</option>
-          </select>
+          <div className={styles.dropDown}>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className={styles.dropDownText}
+            >
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
           <input type="submit" value="Login" />
         </form>
       </section>

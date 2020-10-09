@@ -1,0 +1,94 @@
+/* Layout */
+.container {
+  height: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 15rem;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.inputContainer {
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.7rem;
+}
+
+/* Container styling */
+.inputContainer {
+  background-color: #f3f4f6;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+}
+
+.dropDown {
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  height: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Text Styling */
+.title,
+.subTitle,
+.inputText,
+.dropDownText {
+  color: #23395a;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.subTitle,
+.inputText,
+.dropDownText {
+  font-weight: 600;
+}
+
+.inputLabel {
+  color: #566c8d;
+  font-size: 1rem;
+}
+
+.inputText,
+.dropDownText {
+  border: none;
+  background-color: #f3f4f6;
+  font-size: 0.8rem;
+}
+
+.dropDownText {
+  flex-grow: 1;
+  font-size: 0.8rem;
+  -webkit-appearance: button;
+}
+
+/* Text variants */
+.inputText:focus,
+.dropDownText:focus {
+  outline: none;
+}
+
+/* Others */
+.login {
+  font-family: "Product Sans";
+  font-size: 0.8rem;
+  background-color: #23395a;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 0px 5px 10px;
+  text-align: left;
+}

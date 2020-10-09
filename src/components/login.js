@@ -24,40 +24,46 @@ function Login({ dispatch }) {
 
   return (
     <main>
-      <h1 className={styles.title}>AutoGrade</h1>
-      <h4 className={styles.subTitle}>Sign in to continue</h4>
-      <form onSubmit={submitForm}>
-        <label className={styles.inputLabel}>Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          minLength={4}
-          maxLength={16}
-          required
-          className={styles.inputText}
-        ></input>
-        <label className={styles.inputLabel}>Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          minLength={4}
-          maxLength={16}
-          required
-          className={styles.inputText}
-        ></input>
-        <label className={styles.inputLabel}>Role</label>
-        <select
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className={styles.inputText}
-        >
-          <option value="teacher">teacher</option>
-          <option value="student">student</option>
-        </select>
-        <input type="submit" value="Login" />
-      </form>
+      <section className={styles.container}>
+        <h1 className={styles.title}>AutoGrade</h1>
+        <h4 className={styles.subTitle}>Sign in to continue</h4>
+        <form onSubmit={submitForm} className={styles.formContainer}>
+          <div className={styles.inputContainer}>
+            <label className={styles.inputLabel}>Username</label>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              minLength={4}
+              maxLength={16}
+              required
+              className={styles.inputText}
+            ></input>
+          </div>
+          <div className={styles.inputContainer}>
+            <label className={styles.inputLabel}>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              minLength={4}
+              maxLength={16}
+              required
+              className={styles.inputText}
+            ></input>
+          </div>
+          <label className={styles.inputLabel}>Role</label>
+          <select
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className={styles.inputText}
+          >
+            <option value="teacher">teacher</option>
+            <option value="student">student</option>
+          </select>
+          <input type="submit" value="Login" />
+        </form>
+      </section>
     </main>
   );
 }

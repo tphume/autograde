@@ -1,0 +1,75 @@
+/* Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* NavItem styling */
+.navItem {
+  display: flex;
+  margin: 1rem;
+  list-style-type: none;
+  border-radius: 3px;
+}
+
+.link {
+  font-size: 1.2rem;
+  color: #23395a;
+  text-decoration: none;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* NavItem for when route matches */
+.navItemActive {
+  background-color: #23395a;
+}
+
+.linkActive {
+  color: white;
+}
+
+/* Others */
+.logout {
+  margin: auto 1rem 0 1rem;
+  font-family: "Product Sans";
+  font-size: 1rem;
+  background-color: #c53a2a;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 2rem;
+  color: #23395a;
+  font-weight: 800;
+}
+
+.title {
+  margin: 0 2rem 0 2rem;
+}
+
+.name {
+  font-size: 0.8rem;
+  align-self: center;
+  color: #566c8d;
+  margin-bottom: 1rem;
+}
+
+/* Variants */
+.navItem:hover {
+  background-color: #566c8d;
+}
+
+.link:hover {
+  color: #f3f4f6;
+}
+
+/* This is done to override the unactive hover */
+.navItemActive:hover {
+  background-color: #23395a;
+}

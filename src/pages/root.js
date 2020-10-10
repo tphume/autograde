@@ -3,11 +3,12 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../contexts/auth";
 import Login from "../components/login";
-import Header from "../components/header";
 import SideBar from "../components/sidebar";
 import Overview from "./overview";
 import Grades from "./grades";
 import Labs from "./labs";
+
+import styles from "./root.module.css";
 
 function App() {
   const auth = useContext(AuthContext);
@@ -16,9 +17,12 @@ function App() {
   }
 
   return (
-    <div>
-      <Header username={auth.state.username} />
-      <SideBar dispatch={auth.dispatch} />
+    <div className={styles.container}>
+      <SideBar
+        dispatch={auth.dispatch}
+        username={auth.state.username}
+        role={auth.state.role}
+      />
       <Switch>
         <Route exact path="/">
           <Redirect to="/overview" />

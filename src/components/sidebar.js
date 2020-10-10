@@ -1,25 +1,45 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
-// TODO: add icons to nav items
-function SideBar({ dispatch }) {
+import styles from "./sidebar.module.css";
+
+function SideBar({ dispatch, username, role }) {
   return (
-    <nav>
+    <nav className={styles.container}>
+      <h1 className={styles.title}>AutoGrade</h1>
+      <h6 className={styles.name}>{`${role} - ${username}`}</h6>
       <ul>
-        <li>
-          <NavLink to="/overview">Overview</NavLink>
-        </li>
-        <li>
-          <NavLink to="/grades">Grades</NavLink>
-        </li>
-        <li>
-          <NavLink to="/overview">Labs</NavLink>
-        </li>
-        <li>
-          <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
-        </li>
+        <NavItem route="/overview" name="Overview" />
+        <NavItem route="/grades" name="Grades" />
+        <NavItem route="/labs" name="Labs" />
       </ul>
+      <button
+        className={styles.logout}
+        onClick={() => dispatch({ type: "LOGOUT" })}
+      >
+        LOGOUT
+      </button>
     </nav>
+  );
+}
+
+function NavItem({ route, name }) {
+  const location = useLocation();
+
+  return (
+    <li
+      className={`${styles.navItem} ${
+        location.pathname.startsWith(route) ? styles.navItemActive : ""
+      }`}
+    >
+      <NavLink
+        to={route}
+        className={styles.link}
+        activeClassName={styles.linkActive}
+      >
+        {name}
+      </NavLink>
+    </li>
   );
 }
 

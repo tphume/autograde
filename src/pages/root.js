@@ -3,7 +3,6 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../contexts/auth";
 import Login from "../components/login";
-import Header from "../components/header";
 import SideBar from "../components/sidebar";
 import Overview from "./overview";
 import Grades from "./grades";
@@ -17,7 +16,6 @@ function App() {
 
   return (
     <div>
-      <Header username={auth.state.username} />
       <SideBar dispatch={auth.dispatch} />
       <Switch>
         <Route exact path="/">

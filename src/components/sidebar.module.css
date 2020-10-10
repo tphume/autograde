@@ -41,3 +41,13 @@
   padding: 0.5rem;
   text-align: left;
 }
+
+.title {
+  font-size: 2rem;
+  color: #23395a;
+  font-weight: 800;
+}
+
+.title {
+  margin-left: 1rem;
+}

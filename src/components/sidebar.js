@@ -6,6 +6,7 @@ import styles from "./sidebar.module.css";
 function SideBar({ dispatch }) {
   return (
     <nav className={styles.container}>
+      <h1 className={styles.title}>AutoGrade</h1>
       <ul>
         <NavItem route="/overview" name="Overview" />
         <NavItem route="/grades" name="Grades" />

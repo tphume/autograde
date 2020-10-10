@@ -5,7 +5,7 @@ import styles from "./sidebar.module.css";
 
 function SideBar({ dispatch }) {
   return (
-    <nav>
+    <nav className={styles.container}>
       <ul>
         <NavItem route="/overview" name="Overview" />
         <NavItem route="/grades" name="Grades" />

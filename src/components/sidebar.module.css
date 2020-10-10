@@ -1,3 +1,9 @@
+/* Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* NavItem styling */
 .navItem {
   display: flex;
@@ -25,7 +31,7 @@
 
 /* Others */
 .logout {
-  margin: 1rem;
+  margin: auto 1rem 0 1rem;
   font-family: "Product Sans";
   font-size: 1rem;
   background-color: #c53a2a;

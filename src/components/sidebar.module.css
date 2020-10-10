@@ -40,6 +40,7 @@
   border-radius: 3px;
   padding: 0.5rem;
   text-align: left;
+  cursor: pointer;
 }
 
 .title {
@@ -50,4 +51,18 @@
 
 .title {
   margin: 0 2rem 1rem 2rem;
+}
+
+/* Variants */
+.navItem:hover {
+  background-color: #566c8d;
+}
+
+.link:hover {
+  color: #f3f4f6;
+}
+
+/* This is done to override the unactive hover */
+.navItemActive:hover {
+  background-color: #23395a;
 }

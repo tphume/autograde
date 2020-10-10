@@ -18,7 +18,11 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <SideBar dispatch={auth.dispatch} />
+      <SideBar
+        dispatch={auth.dispatch}
+        username={auth.state.username}
+        role={auth.state.role}
+      />
       <Switch>
         <Route exact path="/">
           <Redirect to="/overview" />

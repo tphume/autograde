@@ -1,5 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+
+import styles from "./sidebar.module.css";
 
 function SideBar({ dispatch }) {
   return (
@@ -15,9 +17,21 @@ function SideBar({ dispatch }) {
 }
 
 function NavItem({ route, name }) {
+  const location = useLocation();
+
   return (
-    <li>
-      <NavLink to={route}>{name}</NavLink>
+    <li
+      className={`${styles.navItem} ${
+        location.pathname.startsWith(route) ? styles.navItemActive : ""
+      }`}
+    >
+      <NavLink
+        to={route}
+        className={styles.link}
+        activeClassName={styles.linkActive}
+      >
+        {name}
+      </NavLink>
     </li>
   );
 }

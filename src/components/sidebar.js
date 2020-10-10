@@ -1,25 +1,24 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-// TODO: add icons to nav items
 function SideBar({ dispatch }) {
   return (
     <nav>
       <ul>
-        <li>
-          <NavLink to="/overview">Overview</NavLink>
-        </li>
-        <li>
-          <NavLink to="/grades">Grades</NavLink>
-        </li>
-        <li>
-          <NavLink to="/overview">Labs</NavLink>
-        </li>
-        <li>
-          <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
-        </li>
+        <NavItem route="/overview" name="Overview" />
+        <NavItem route="/grades" name="Grades" />
+        <NavItem route="/labs" name="Labs" />
       </ul>
+      <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
     </nav>
+  );
+}
+
+function NavItem({ route, name }) {
+  return (
+    <li>
+      <NavLink to={route}>{name}</NavLink>
+    </li>
   );
 }
 

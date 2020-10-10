@@ -22,3 +22,16 @@
 .linkActive {
   color: white;
 }
+
+/* Others */
+.logout {
+  margin: 1rem;
+  font-family: "Product Sans";
+  font-size: 1rem;
+  background-color: #c53a2a;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem;
+  text-align: left;
+}

@@ -11,7 +11,12 @@ function SideBar({ dispatch }) {
         <NavItem route="/grades" name="Grades" />
         <NavItem route="/labs" name="Labs" />
       </ul>
-      <button onClick={() => dispatch({ type: "LOGOUT" })}>Logout</button>
+      <button
+        className={styles.logout}
+        onClick={() => dispatch({ type: "LOGOUT" })}
+      >
+        LOGOUT
+      </button>
     </nav>
   );
 }

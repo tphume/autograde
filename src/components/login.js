@@ -7,7 +7,7 @@ import styles from "./login.module.css";
 function Login({ dispatch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState("Student");
 
   async function submitForm(e) {
     e.preventDefault();
@@ -59,8 +59,8 @@ function Login({ dispatch }) {
               onChange={(e) => setRole(e.target.value)}
               className={styles.dropDownText}
             >
-              <option value="teacher">Teacher</option>
-              <option value="student">Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Student">Student</option>
             </select>
           </div>
           <input type="submit" value="LOGIN" className={styles.login} />

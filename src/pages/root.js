@@ -8,6 +8,8 @@ import Overview from "./overview";
 import Grades from "./grades";
 import Labs from "./labs";
 
+import styles from "./root.module.css";
+
 function App() {
   const auth = useContext(AuthContext);
   if (!auth.state.isAuth) {
@@ -15,7 +17,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <SideBar dispatch={auth.dispatch} />
       <Switch>
         <Route exact path="/">

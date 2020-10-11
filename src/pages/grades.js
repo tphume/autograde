@@ -1,9 +1,11 @@
 import React from "react";
 
+import GradeList from "../components/gradeList";
+
 function Grades() {
   return (
     <>
-      <h1>Grades</h1>
+      <GradeList />
     </>
   );
 }

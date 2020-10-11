@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 import { AuthContext } from "../contexts/auth";
 
+import styles from "./subjectList.module.css";
+
 function SubjectList() {
   const { state } = useContext(AuthContext);
 
@@ -14,10 +16,10 @@ function SubjectList() {
 
 function subjectItem(id, name, prof) {
   return (
-    <li key={id}>
-      <h3>{name}</h3>
-      <h6>{id}</h6>
-      <h4>{prof}</h4>
+    <li key={id} className={styles.card}>
+      <h3 className={styles.name}>{name}</h3>
+      <h6 className={styles.id}>{id}</h6>
+      <h4 className={styles.prof}>{prof}</h4>
     </li>
   );
 }

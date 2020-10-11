@@ -3,9 +3,23 @@ import React, { useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 
 function SubjectList() {
-  const { authState } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
-  return <h1>I am SubjectList placholder</h1>;
+  return (
+    <section>
+      <ul>{state.subjects.map((s) => subjectItem(s.id, s.name, s.prof))}</ul>
+    </section>
+  );
+}
+
+function subjectItem(id, name, prof) {
+  return (
+    <li key={id}>
+      <h3>{name}</h3>
+      <h6>{id}</h6>
+      <h4>{prof}</h4>
+    </li>
+  );
 }
 
 export default SubjectList;

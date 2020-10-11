@@ -4,8 +4,8 @@ async function authenticate(username, password, role) {
   return {
     token: "faketoken",
     subjects: [
-      { id: "1", name: "Python" },
-      { id: "2", name: "C++" },
+      { id: "100434324", name: "Python", prof: "Dr.Snake Cobra" },
+      { id: "100543432", name: "C++", prof: "Dr.Eye Glasses" },
     ],
   };
 }

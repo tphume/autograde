@@ -1,11 +1,13 @@
 /* Layout */
 .container {
-  height: 60%;
-  margin: auto;
+  margin: 6vh auto 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 15rem;
+  width: 20rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 3px;
 }
 
 .formContainer {

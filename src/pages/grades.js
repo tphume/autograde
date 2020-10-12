@@ -38,9 +38,21 @@ function Grades({ current }) {
                 </div>
                 <h5 className={styles.date}>{`${g.start}-${g.due}`}</h5>
               </div>
-              <div>
-                <h4>{g.type}</h4>
-                <h4>{g.status}</h4>
+              <div className={styles.cardBottom}>
+                <h4
+                  className={
+                    g.type === "Quiz" ? styles.typeQuiz : styles.typeProg
+                  }
+                >
+                  {g.type}
+                </h4>
+                <h4
+                  className={
+                    g.status === "Pass" ? styles.statusPass : styles.statusFail
+                  }
+                >
+                  {g.status}
+                </h4>
               </div>
             </li>
           );

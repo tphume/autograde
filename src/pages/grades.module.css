@@ -14,15 +14,49 @@
   justify-content: space-between;
 }
 
+.cardBottom {
+  display: flex;
+  margin: 2rem 0 0 0;
+}
+
 /* Text styling */
 .name {
   color: #23395a;
   font-size: 1.6rem;
 }
 
-.id,
-.date {
+.id {
   color: #566c8d;
+}
+
+.date {
+  color: #008e9c;
+}
+
+.typeProg,
+.typeQuiz,
+.statusPass,
+.statusPass {
+  color: white;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.5rem 0 0;
+  border-radius: 2px;
+}
+
+.typeProg {
+  background-color: #706391;
+}
+
+.typeQuiz {
+  background-color: #d9a21b;
+}
+
+.statusPass {
+  background-color: #89dd80;
+}
+
+.statusFail {
+  background-color: #c53a2a;
 }
 
 /* Variants */

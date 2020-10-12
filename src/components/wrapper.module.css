@@ -2,7 +2,6 @@
 .container {
   flex-grow: 1;
   display: flex;
-  justify-content: space-around;
   height: 100vh;
-  padding: 3vh 0 3vh 0;
+  padding: 3vh 4rem 3vh 4rem;
 }

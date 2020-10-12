@@ -1,10 +1,17 @@
 import React from "react";
 
-function Labs() {
+import { fetchStudentLabList } from "../repo/lab";
+import CardList from "../components/cardList";
+
+function Labs({ current }) {
+  if (current === "") {
+    return <></>;
+  }
+
   return (
-    <main>
-      <h1>Lab</h1>
-    </main>
+    <>
+      <CardList current={current} api={fetchStudentLabList} />
+    </>
   );
 }
 

@@ -1,11 +1,18 @@
 import React from "react";
 
-function Grades() {
+import { fetchStudentGradeList } from "../repo/grade";
+import CardList from "../components/cardList";
+
+function Grade({ current }) {
+  if (current === "") {
+    return <></>;
+  }
+
   return (
-    <main>
-      <h1>Grades</h1>
-    </main>
+    <>
+      <CardList current={current} api={fetchStudentGradeList} />
+    </>
   );
 }
 
-export default Grades;
+export default Grade;

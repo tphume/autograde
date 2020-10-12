@@ -1,5 +1,8 @@
 import React from "react";
 
+import { fetchStudentLabList } from "../repo/lab";
+import CardList from "../components/cardList";
+
 function Labs({ current }) {
   if (current === "") {
     return <></>;
@@ -7,7 +10,7 @@ function Labs({ current }) {
 
   return (
     <>
-      <h1>Lab</h1>
+      <CardList current={current} api={fetchStudentLabList} />
     </>
   );
 }

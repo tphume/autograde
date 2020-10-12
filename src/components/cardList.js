@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { AuthContext } from "../contexts/auth";
 
-import styles from "./grades.module.css";
+import styles from "./cardList.module.css";
 
 function CardList({ current, api }) {
   const {

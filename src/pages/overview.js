@@ -1,6 +1,10 @@
 import React from "react";
 
-function Overview() {
+function Overview({ current }) {
+  if (current === "") {
+    return <></>;
+  }
+
   return (
     <>
       <h1>Overview</h1>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../contexts/auth";
@@ -12,6 +12,8 @@ import Labs from "./labs";
 import styles from "./root.module.css";
 
 function App() {
+  const [current, setCurrent] = useState("");
+
   const auth = useContext(AuthContext);
   if (!auth.state.isAuth) {
     return <Login dispatch={auth.dispatch}></Login>;
@@ -24,19 +26,19 @@ function App() {
         username={auth.state.username}
         role={auth.state.role}
       />
-      <Wrapper>
+      <Wrapper current={current} setCurrent={setCurrent}>
         <Switch>
           <Route exact path="/">
             <Redirect to="/overview" />
           </Route>
           <Route exact path="/overview">
-            <Overview />
+            <Overview current={current} />
           </Route>
           <Route exact path="/grades">
-            <Grades />
+            <Grades current={current} />
           </Route>
           <Route exact path="/labs">
-            <Labs />
+            <Labs current={current} />
           </Route>
         </Switch>
       </Wrapper>

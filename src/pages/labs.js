@@ -1,6 +1,10 @@
 import React from "react";
 
-function Labs() {
+function Labs({ current }) {
+  if (current === "") {
+    return <></>;
+  }
+
   return (
     <>
       <h1>Lab</h1>

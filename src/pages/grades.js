@@ -1,11 +1,13 @@
 import React from "react";
 
-import GradeList from "../components/gradeList";
+function Grades({ current }) {
+  if (current === "") {
+    return <></>;
+  }
 
-function Grades() {
   return (
     <>
-      <GradeList />
+      <h1>Grades</h1>
     </>
   );
 }

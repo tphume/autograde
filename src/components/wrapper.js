@@ -7,10 +7,9 @@ import SubjectList from "../components/subjectList";
 
 import styles from "./wrapper.module.css";
 
-function Wrapper({ children }) {
+function Wrapper({ children, current, setCurrent }) {
   const { state: auth } = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
-  const [current, setCurrent] = useState("");
 
   useEffect(() => {
     async function temp() {
@@ -23,7 +22,9 @@ function Wrapper({ children }) {
     }
 
     temp();
-  }, [auth.token]);
+
+    return () => setCurrent("");
+  }, [auth.token, setCurrent]);
 
   return (
     <main className={styles.container}>

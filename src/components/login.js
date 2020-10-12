@@ -13,8 +13,8 @@ function Login({ dispatch }) {
     e.preventDefault();
 
     try {
-      const { token, subjects } = await authenticate(username, password, role);
-      dispatch({ type: "LOGIN", payload: { role, username, token, subjects } });
+      const { token } = await authenticate(username, password, role);
+      dispatch({ type: "LOGIN", payload: { role, username, token } });
     } catch (error) {
       // TODO: add error displaying logic
       console.log(error);

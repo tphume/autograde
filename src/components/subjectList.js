@@ -1,15 +1,11 @@
-import React, { useContext } from "react";
-
-import { AuthContext } from "../contexts/auth";
+import React from "react";
 
 import styles from "./subjectList.module.css";
 
-function SubjectList() {
-  const { state } = useContext(AuthContext);
-
+function SubjectList({ subjects }) {
   return (
     <section>
-      <ul>{state.subjects.map((s) => subjectItem(s.id, s.name, s.prof))}</ul>
+      <ul>{subjects.map((s) => subjectItem(s.id, s.name, s.prof))}</ul>
     </section>
   );
 }

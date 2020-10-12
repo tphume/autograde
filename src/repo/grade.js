@@ -5,7 +5,6 @@ async function fetchStudentGradeList(token, subject) {
     {
       id: "fakeid1",
       name: "Python Lab 1",
-      subject: subject,
       type: "Programming Assignment",
       status: "Passed",
       start: "",
@@ -16,7 +15,6 @@ async function fetchStudentGradeList(token, subject) {
     {
       id: "fakeid2",
       name: "Data types in Python",
-      subject: subject,
       type: "Quiz",
       status: "Passed",
       start: "",

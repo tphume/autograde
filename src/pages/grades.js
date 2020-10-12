@@ -8,7 +8,7 @@ function Grades({ current }) {
   useEffect(() => {
     async function temp() {
       try {
-        const arr = fetchStudentGradeList();
+        const arr = await fetchStudentGradeList();
         setGrades(arr);
       } catch (error) {
         console.log(error);
@@ -25,7 +25,28 @@ function Grades({ current }) {
 
   return (
     <>
-      <h1>Grades</h1>
+      <ul>
+        {grades.map((g) => {
+          return (
+            <li key={g.id}>
+              <div>
+                <div>
+                  <h3>{g.name}</h3>
+                  <h6>{g.id}</h6>
+                </div>
+                <div>
+                  <h5>{g.start}</h5>
+                  <h5>{g.due}</h5>
+                </div>
+              </div>
+              <div>
+                <h4>{g.type}</h4>
+                <h4>{g.status}</h4>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </>
   );
 }

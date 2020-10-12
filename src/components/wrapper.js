@@ -10,6 +10,7 @@ import styles from "./wrapper.module.css";
 function Wrapper({ children }) {
   const { state: auth } = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
+  const [current, setCurrent] = useState("");
 
   useEffect(() => {
     async function temp() {
@@ -26,7 +27,11 @@ function Wrapper({ children }) {
 
   return (
     <main className={styles.container}>
-      <SubjectList subjects={subjects} />
+      <SubjectList
+        subjects={subjects}
+        current={current}
+        setCurrent={setCurrent}
+      />
       {children}
     </main>
   );

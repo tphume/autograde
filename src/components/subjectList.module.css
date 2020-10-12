@@ -32,3 +32,9 @@
 .card:hover {
   border: 3px solid #23395a;
 }
+
+/* Others */
+.current,
+.current:hover {
+  border: 3px solid #c53a2a;
+}

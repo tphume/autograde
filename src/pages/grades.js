@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { fetchStudentGradeList } from "../repo/grade";
 
+import styles from "./grades.module.css";
+
 function Grades({ current }) {
   const [grades, setGrades] = useState([]);
 
@@ -28,16 +30,13 @@ function Grades({ current }) {
       <ul>
         {grades.map((g) => {
           return (
-            <li key={g.id}>
-              <div>
+            <li key={g.id} className={styles.card}>
+              <div className={styles.cardTop}>
                 <div>
-                  <h3>{g.name}</h3>
-                  <h6>{g.id}</h6>
+                  <h3 className={styles.name}>{g.name}</h3>
+                  <h6 className={styles.id}>{g.id}</h6>
                 </div>
-                <div>
-                  <h5>{g.start}</h5>
-                  <h5>{g.due}</h5>
-                </div>
+                <h5 className={styles.date}>{`${g.start}-${g.due}`}</h5>
               </div>
               <div>
                 <h4>{g.type}</h4>

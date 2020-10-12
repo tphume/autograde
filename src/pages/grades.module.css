@@ -1,0 +1,33 @@
+/* Layout */
+.card {
+  list-style-type: none;
+  background: white;
+  margin: 0 1rem 2rem 2rem;
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Text styling */
+.name {
+  color: #23395a;
+  font-size: 1.6rem;
+}
+
+.id,
+.date {
+  color: #566c8d;
+}
+
+/* Variants */
+.card:hover {
+  border: 3px solid #23395a;
+}
+
+/* Others */

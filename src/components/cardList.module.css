@@ -54,8 +54,17 @@
   background-color: #89dd80;
 }
 
-.statusFail {
+.statusFail,
+.statusLate {
   background-color: #c53a2a;
+}
+
+.statusGrading {
+  background-color: #f9f871;
+}
+
+.statusPending {
+  background-color: #a4abbd;
 }
 
 /* Variants */

@@ -1,6 +1,8 @@
 async function fetchStudentGradeList(token, subject) {
   //TODO: call api endpoint to fetch a student grade list by subject
   // this is currently a mock api call that will always succeed
+  if (subject === "") return [];
+
   return [
     {
       id: "fakeid1",

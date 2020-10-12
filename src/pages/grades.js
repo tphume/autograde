@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
+import { AuthContext } from "../contexts/auth";
 import { fetchStudentGradeList } from "../repo/grade";
 
 import styles from "./grades.module.css";
 
 function Grades({ current }) {
+  const {
+    state: { token },
+  } = useContext(AuthContext);
+
   const [grades, setGrades] = useState([]);
 
   useEffect(() => {
     async function temp() {
       try {
-        const arr = await fetchStudentGradeList();
+        const arr = await fetchStudentGradeList(token, current);
         setGrades(arr);
       } catch (error) {
         console.log(error);
@@ -18,7 +23,7 @@ function Grades({ current }) {
     }
 
     temp();
-  }, [current]);
+  }, [token, current]);
 
   // Return nothing if have not selected subject
   if (current === "") {

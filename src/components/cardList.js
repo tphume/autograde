@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { AuthContext } from "../contexts/auth";
+import Modal from "../components/modal";
 
 import styles from "./cardList.module.css";
 
@@ -10,6 +11,7 @@ function CardList({ current, api }) {
   } = useContext(AuthContext);
 
   const [state, setState] = useState([]);
+  const [detail, setDetail] = useState("");
 
   useEffect(() => {
     async function temp() {
@@ -51,7 +53,7 @@ function CardList({ current, api }) {
           }
 
           return (
-            <li key={s.id} className={styles.card}>
+            <li key={s.id} className={styles.card} onClick={() => setDetail(s.id)}>
               <div className={styles.cardTop}>
                 <div>
                   <h3 className={styles.name}>{s.name}</h3>
@@ -73,6 +75,7 @@ function CardList({ current, api }) {
           );
         })}
       </ul>
+      {detail !== "" && <Modal></Modal>}
     </>
   );
 }

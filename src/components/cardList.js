@@ -5,7 +5,7 @@ import Modal from "../components/modal";
 
 import styles from "./cardList.module.css";
 
-function CardList({ current, api }) {
+function CardList({ current, api, children }) {
   const {
     state: { token },
   } = useContext(AuthContext);
@@ -53,7 +53,11 @@ function CardList({ current, api }) {
           }
 
           return (
-            <li key={s.id} className={styles.card} onClick={() => setDetail(s.id)}>
+            <li
+              key={s.id}
+              className={styles.card}
+              onClick={() => setDetail(s.id)}
+            >
               <div className={styles.cardTop}>
                 <div>
                   <h3 className={styles.name}>{s.name}</h3>
@@ -75,7 +79,7 @@ function CardList({ current, api }) {
           );
         })}
       </ul>
-      {detail !== "" && <Modal></Modal>}
+      {detail !== "" && <Modal>{children}</Modal>}
     </>
   );
 }

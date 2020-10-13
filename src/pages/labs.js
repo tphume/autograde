@@ -2,6 +2,7 @@ import React from "react";
 
 import { fetchStudentLabList } from "../repo/lab";
 import CardList from "../components/cardList";
+import LabModal from "../components/labModal";
 
 function Labs({ current }) {
   if (current === "") {
@@ -10,7 +11,9 @@ function Labs({ current }) {
 
   return (
     <>
-      <CardList current={current} api={fetchStudentLabList} />
+      <CardList current={current} api={fetchStudentLabList}>
+        <LabModal />
+      </CardList>
     </>
   );
 }

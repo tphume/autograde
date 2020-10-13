@@ -2,6 +2,7 @@ import React from "react";
 
 import { fetchStudentGradeList } from "../repo/grade";
 import CardList from "../components/cardList";
+import GradeModal from "../components/gradeModal";
 
 function Grade({ current }) {
   if (current === "") {
@@ -10,7 +11,9 @@ function Grade({ current }) {
 
   return (
     <>
-      <CardList current={current} api={fetchStudentGradeList} />
+      <CardList current={current} api={fetchStudentGradeList}>
+        <GradeModal />
+      </CardList>
     </>
   );
 }

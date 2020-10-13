@@ -47,6 +47,21 @@ function Quiz(s) {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
+            <ol className={styles.choices}>
+              {q.choices.map((c, j) => (
+                <li key={j}>
+                  <label>
+                    {c}
+                    <input
+                      type="radio"
+                      name={i}
+                      value="randomfornow"
+                      className={styles.radio}
+                    />
+                  </label>
+                </li>
+              ))}
+            </ol>
           </li>
         );
       })}

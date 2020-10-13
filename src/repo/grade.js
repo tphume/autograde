@@ -60,4 +60,47 @@ async function fetchStudentGradeList(token, subject) {
   ];
 }
 
-export { fetchStudentGradeList };
+async function fetchGradeDetail(token, id) {
+  //TODO: call api endpoint to fetch a student grade individual detail
+  // this is currently a mock api call that will always succeed
+  if (id === "") return [];
+
+  return {
+    points: 3,
+    total: 5,
+    questions: [
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        userAnswer: "B",
+        answer: "B",
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        userAnswer: "B",
+        answer: "C",
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        userAnswer: "A",
+        answer: "A",
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        userAnswer: "D",
+        answer: "B",
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        userAnswer: "B",
+        answer: "B",
+      },
+    ],
+  };
+}
+
+export { fetchStudentGradeList, fetchGradeDetail };

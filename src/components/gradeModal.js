@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./gradeModal.module.css";
 
 function GradeModal({ setdetail }) {
+  const [state, setState] = useState();
+
+  useEffect(() => {}, []);
+
   return (
     <section>
       <div className={styles.footer}>

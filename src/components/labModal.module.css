@@ -9,6 +9,17 @@
   padding: 0.7rem;
 }
 
+.questions {
+  max-height: 37.5rem;
+  overflow: scroll;
+  padding: 1rem;
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 2rem;
+}
+
 /* Button */
 .save,
 .exit {
@@ -30,4 +41,12 @@
 
 .exit {
   background-color: #c53a2a;
+}
+
+.title {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #23395a;
 }

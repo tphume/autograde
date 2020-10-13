@@ -42,7 +42,7 @@ function GradeModal({ setdetail, detail }) {
 
 function Quiz(s) {
   return (
-    <ul>
+    <ul className={styles.questions}>
       {s.questions.map((q, i) => {
         return (
           <li key={i}>

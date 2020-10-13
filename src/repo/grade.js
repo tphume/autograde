@@ -66,6 +66,7 @@ async function fetchGradeDetail(token, id) {
   if (id === "") return [];
 
   return {
+    type: "Quiz",
     points: 3,
     total: 5,
     questions: [

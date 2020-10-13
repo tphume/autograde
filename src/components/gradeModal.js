@@ -41,7 +41,24 @@ function GradeModal({ setdetail, detail }) {
 }
 
 function Quiz(s) {
-  return <div></div>;
+  return (
+    <ul>
+      {s.questions.map((q, i) => {
+        return (
+          <li key={i}>
+            <h2>{q.question}</h2>
+            <ol>
+              {q.choices.map((c, i) => (
+                <li key={i}>{c}</li>
+              ))}
+            </ol>
+            <h3>Your answer {q.userAnswer}</h3>
+            <h3>Correct answer {q.answer}</h3>
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 function Prog(s) {

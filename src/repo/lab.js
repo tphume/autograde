@@ -60,4 +60,37 @@ async function fetchStudentLabList(token, subject) {
   ];
 }
 
-export { fetchStudentLabList };
+async function fetchLabDetail(token, id) {
+  //TODO: call api endpoint to fetch a student grade individual detail
+  // this is currently a mock api call that will always succeed
+  if (id === "") return [];
+
+  return {
+    type: "Quiz",
+    total: "5",
+    questions: [
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+      },
+      {
+        question: "This is just an example question?",
+        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+      },
+    ],
+  };
+}
+
+export { fetchStudentLabList, fetchLabDetail };

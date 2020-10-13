@@ -5,6 +5,7 @@
   background-color: white;
   height: 100vh;
   padding: 3vh 0 3vh 0;
+  min-width: 18rem;
 }
 
 /* NavItem styling */
@@ -44,12 +45,14 @@
   padding: 0.5rem;
   text-align: left;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .title {
   font-size: 2rem;
   color: #23395a;
   font-weight: 800;
+  text-align: center;
 }
 
 .title {

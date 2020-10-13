@@ -1,7 +1,17 @@
 import React from "react";
 
+import styles from "./gradeModal.module.css";
+
 function GradeModal({ setdetail }) {
-  return <h1>Hi - you are in grade modal</h1>;
+  return (
+    <section>
+      <div className={styles.footer}>
+        <button className={styles.exit} onClick={() => setdetail("")}>
+          EXIT
+        </button>
+      </div>
+    </section>
+  );
 }
 
 export default GradeModal;

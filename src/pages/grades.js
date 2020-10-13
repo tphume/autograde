@@ -19,7 +19,7 @@ function Grade({ current }) {
         detail={detail}
         setdetail={setDetail}
       >
-        <GradeModal />
+        <GradeModal setdetail={setDetail} />
       </CardList>
     </>
   );

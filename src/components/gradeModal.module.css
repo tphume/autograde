@@ -10,6 +10,21 @@
 }
 
 /* Styling */
+.title {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background-color: #23395a;
+}
+
+.score {
+  background: white;
+  color: #23395a;
+  padding: 0.2rem 0.4rem;
+  border-radius: 2px;
+}
+
 .exit {
   cursor: pointer;
   font-family: "Product Sans";

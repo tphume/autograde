@@ -26,9 +26,9 @@ function GradeModal({ setdetail, detail }) {
 
   return (
     <section>
-      <h2>
+      <h2 className={styles.title}>
         For this assignment you scored{" "}
-        <span>{`${state.points}/${state.total}!`}</span>
+        <span className={styles.score}>{`${state.points}/${state.total}`}</span>
       </h2>
       {state.type === "Quiz" ? Quiz(state) : Prog(state)}
       <div className={styles.footer}>

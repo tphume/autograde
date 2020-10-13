@@ -19,7 +19,7 @@ function Labs({ current }) {
         detail={detail}
         setdetail={setDetail}
       >
-        <LabModal />
+        <LabModal setdetail={setDetail} />
       </CardList>
     </>
   );

@@ -5,13 +5,12 @@ import Modal from "../components/modal";
 
 import styles from "./cardList.module.css";
 
-function CardList({ current, api, children }) {
+function CardList({ current, api, detail, setdetail, children }) {
   const {
     state: { token },
   } = useContext(AuthContext);
 
   const [state, setState] = useState([]);
-  const [detail, setDetail] = useState("");
 
   useEffect(() => {
     async function temp() {
@@ -56,7 +55,7 @@ function CardList({ current, api, children }) {
             <li
               key={s.id}
               className={styles.card}
-              onClick={() => setDetail(s.id)}
+              onClick={() => setdetail(s.id)}
             >
               <div className={styles.cardTop}>
                 <div>

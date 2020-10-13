@@ -45,15 +45,20 @@ function Quiz(s) {
     <ul className={styles.questions}>
       {s.questions.map((q, i) => {
         return (
-          <li key={i}>
+          <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            <ol>
+            <ol className={styles.choices}>
               {q.choices.map((c, i) => (
                 <li key={i}>{c}</li>
               ))}
             </ol>
-            <h3>Your answer {q.userAnswer}</h3>
-            <h3>Correct answer {q.answer}</h3>
+            <h3
+              className={
+                q.userAnswer === q.answer ? styles.correct : styles.wrong
+              }
+            >
+              You answered {q.userAnswer} - Correct answer {q.answer}
+            </h3>
           </li>
         );
       })}

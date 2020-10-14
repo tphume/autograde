@@ -65,6 +65,39 @@ async function fetchGradeDetail(token, id) {
   // this is currently a mock api call that will always succeed
   if (id === "") return [];
 
+  if (id === "875958198" || id === "3430958198" || id === "9430948198") {
+    return {
+      type: "Prog",
+      points: 4,
+      total: 5,
+      questions: [
+        {
+          question: "This is just an example question?",
+          userAnswer: `print("Hello World!")`,
+        },
+        {
+          question: "This is just an example question?",
+          userAnswer: `print("Hello World!")`,
+        },
+        {
+          question: "This is just an example question?",
+          userAnswer: `notprint("Hello World!")`,
+          fail: true,
+          expect: "Hello World!",
+          got: "Syntax Error",
+        },
+        {
+          question: "This is just an example question?",
+          userAnswer: `print("Hello World!")`,
+        },
+        {
+          question: "This is just an example question?",
+          userAnswer: `print("Hello World!")`,
+        },
+      ],
+    };
+  }
+
   return {
     type: "Quiz",
     points: 3,

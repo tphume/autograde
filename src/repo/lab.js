@@ -65,6 +65,34 @@ async function fetchLabDetail(token, id) {
   // this is currently a mock api call that will always succeed
   if (id === "") return [];
 
+  if (
+    id === "775958198" ||
+    id === "3430958198" ||
+    id === "Programming Assignment"
+  ) {
+    return {
+      type: "Prog",
+      total: "5",
+      questions: [
+        {
+          question: "This is just an example question?",
+        },
+        {
+          question: "This is just an example question?",
+        },
+        {
+          question: "This is just an example question?",
+        },
+        {
+          question: "This is just an example question?",
+        },
+        {
+          question: "This is just an example question?",
+        },
+      ],
+    };
+  }
+
   return {
     type: "Quiz",
     total: "5",

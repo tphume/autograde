@@ -68,27 +68,26 @@ function Quiz(s) {
 }
 
 function Prog(s) {
-  console.log(s);
   return (
     <ul className={styles.questions}>
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>{q.question}</h2>
-            <textarea readOnly className={styles.code}>
-              {q.userAnswer}
-            </textarea>
+            <h2>
+              {q.question} <span></span>
+            </h2>
+            <textarea readOnly className={styles.code} value={q.userAnswer} />
             {q.fail !== true ? (
               <h3 className={styles.correct}>Pass</h3>
             ) : (
               <>
                 <p className={styles.info}>
                   Expected output{" "}
-                  <span className={styles.correct}>{q.expect}</span>
+                  <span className={styles.secondary}>{q.expect}</span>
                 </p>
                 <p className={styles.info}>
                   Output from user's code -{" "}
-                  <span className={styles.wrong}>{q.got}</span>
+                  <span className={styles.secondary}>{q.got}</span>
                 </p>
                 <h3 className={styles.wrong}>Fail</h3>
               </>

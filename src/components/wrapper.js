@@ -8,14 +8,15 @@ import SubjectList from "../components/subjectList";
 import styles from "./wrapper.module.css";
 
 function Wrapper({ children, current, setCurrent }) {
-  const { state: auth } = useContext(AuthContext);
+  const {
+    state: { token },
+  } = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     async function temp() {
       try {
-        const arr = await fetchSubjectList(auth.token);
-        setSubjects(arr);
+        setSubjects(await fetchSubjectList(token));
       } catch (error) {
         console.log(error);
       }
@@ -24,7 +25,7 @@ function Wrapper({ children, current, setCurrent }) {
     temp();
 
     return () => setCurrent("");
-  }, [auth.token, setCurrent]);
+  }, [token, setCurrent]);
 
   return (
     <main className={styles.container}>

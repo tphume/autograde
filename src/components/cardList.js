@@ -15,8 +15,7 @@ function CardList({ current, api, detail, setdetail, children }) {
   useEffect(() => {
     async function temp() {
       try {
-        const arr = await api(token, current);
-        setState(arr);
+        setState(await api(token, current));
       } catch (error) {
         console.log(error);
       }

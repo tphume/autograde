@@ -9,3 +9,64 @@
   width: 30rem;
   border-radius: 5px;
 }
+
+/* Styling */
+.content {
+  color: #23395a;
+}
+
+.content > h2 {
+  font-size: 1.6rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.content > p {
+  font-size: 1.2rem;
+  margin-bottom: 0.9rem;
+  color: #566c8d;
+}
+
+.total {
+  font-size: 1.5rem;
+  color: #23395a;
+  font-weight: 700;
+}
+
+.prog,
+.quiz,
+.pass,
+.fail,
+.late,
+.pending,
+.grading {
+  color: white;
+  padding: 0.2rem 0.5rem;
+  margin: 0 0.5rem 0 0;
+  border-radius: 2px;
+}
+
+.prog {
+  background-color: #706391;
+}
+
+.quiz {
+  background-color: #f5a4d0;
+}
+
+.pass {
+  background-color: #89dd80;
+}
+
+.fail,
+.late {
+  background-color: #c53a2a;
+}
+
+.pending {
+  background-color: #a4abbd;
+}
+
+.grading {
+  background-color: #d9a21b;
+}

@@ -25,49 +25,62 @@ function Overview({ current }) {
 
   return (
     <section className={styles.container}>
-      <div>
+      <div className={styles.content}>
         <h2>Grades</h2>
         <p>
-          There have been a total of <span>{state.grades.total}</span>{" "}
-          assigments graded
+          There have been a total of{" "}
+          <span className={styles.total}>{state.grades.total}</span> assigments
+          graded
         </p>
         <p>
-          {state.grades.prog} of your assignments are of{" "}
-          <span>Programming Assigment</span> type
+          You have{" "}
+          <span className={styles.prog}>{state.grades.prog} Programming</span>{" "}
+          assignments graded
         </p>
         <p>
-          {state.grades.quiz} of your assignments are of <span>Quiz</span> type
+          You have <span className={styles.quiz}>{state.grades.quiz} Quiz</span>{" "}
+          assignments graded
         </p>
         <p>
-          You have a total of <span>{state.grades.pass} passing </span>
+          You have a total of{" "}
+          <span className={styles.pass}>{state.grades.pass} passing </span>
           assignments grade
         </p>
         <p>
-          You have a total of <span>{state.grades.fail} failing </span>
+          You have a total of{" "}
+          <span className={styles.fail}>{state.grades.fail} failing </span>
           assignments grade
         </p>
       </div>
-      <div>
+      <div className={styles.content}>
         <h2>Labs</h2>
         <p>
-          There are currently a total of <span>{state.labs.total}</span> labs
-          assigned to you
+          There are currently a total of{" "}
+          <span className={styles.total}>{state.labs.total}</span> labs assigned
+          to you
         </p>
         <p>
-          {state.labs.prog} of your assignments are of{" "}
-          <span>Programming Assigment</span> type
+          You have{" "}
+          <span className={styles.prog}>{state.labs.prog} Programming</span>{" "}
+          labs
         </p>
         <p>
-          {state.labs.quiz} of your assignments are of <span>Quiz</span> type
+          You have <span className={styles.quiz}>{state.labs.quiz} Quiz</span>{" "}
+          labs
         </p>
         <p>
-          You have <span>{state.labs.pending} pending</span> labs
+          You have{" "}
+          <span className={styles.pending}>{state.labs.pending} pending</span>{" "}
+          labs
         </p>
         <p>
-          You have <span>{state.labs.late} late</span> labs
+          You have <span className={styles.late}>{state.labs.late} late</span>{" "}
+          labs
         </p>
         <p>
-          The teacher is <span>grading {state.labs.grading} </span>of your labs
+          The teacher is{" "}
+          <span className={styles.grading}>grading {state.labs.grading} </span>
+          of your labs
         </p>
       </div>
     </section>

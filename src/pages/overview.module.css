@@ -1,0 +1,11 @@
+/* Layout */
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: auto;
+  background: white;
+  margin: 0 1rem 2rem 2rem;
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 5px;
+}

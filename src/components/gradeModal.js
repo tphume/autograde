@@ -75,18 +75,22 @@ function Prog(s) {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            <textarea readOnly>{q.userAnswer}</textarea>
+            <textarea readOnly className={styles.code}>
+              {q.userAnswer}
+            </textarea>
             {q.fail !== true ? (
-              <h3>Pass</h3>
+              <h3 className={styles.correct}>Pass</h3>
             ) : (
               <>
-                <h3>Fail</h3>
-                <p>
-                  Expected output <span>{q.expect}</span>
+                <p className={styles.info}>
+                  Expected output{" "}
+                  <span className={styles.correct}>{q.expect}</span>
                 </p>
-                <p>
-                  Output from user's code - <span>{q.got}</span>
+                <p className={styles.info}>
+                  Output from user's code -{" "}
+                  <span className={styles.wrong}>{q.got}</span>
                 </p>
+                <h3 className={styles.wrong}>Fail</h3>
               </>
             )}
           </li>

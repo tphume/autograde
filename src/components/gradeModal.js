@@ -30,7 +30,8 @@ function GradeModal({ setdetail, detail }) {
         For this assignment you scored{" "}
         <span className={styles.score}>{`${state.points}/${state.total}`}</span>
       </h2>
-      {state.type === "Quiz" ? Quiz(state) : Prog(state)}
+      {state.type === "Quiz" ? Quiz(state) : <></>}
+      {state.type === "Prog" ? Prog(state) : <></>}
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT
@@ -67,7 +68,36 @@ function Quiz(s) {
 }
 
 function Prog(s) {
-  return <div></div>;
+  console.log(s);
+  return (
+    <ul className={styles.questions}>
+      {s.questions.map((q, i) => {
+        return (
+          <li key={i} className={styles.item}>
+            <h2>{q.question}</h2>
+            <textarea readOnly className={styles.code}>
+              {q.userAnswer}
+            </textarea>
+            {q.fail !== true ? (
+              <h3 className={styles.correct}>Pass</h3>
+            ) : (
+              <>
+                <p className={styles.info}>
+                  Expected output{" "}
+                  <span className={styles.correct}>{q.expect}</span>
+                </p>
+                <p className={styles.info}>
+                  Output from user's code -{" "}
+                  <span className={styles.wrong}>{q.got}</span>
+                </p>
+                <h3 className={styles.wrong}>Fail</h3>
+              </>
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export default GradeModal;

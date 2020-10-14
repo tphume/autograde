@@ -73,9 +73,7 @@ function Prog(s) {
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>
-              {q.question} <span></span>
-            </h2>
+            <h2>{q.question}</h2>
             <textarea readOnly className={styles.code} value={q.userAnswer} />
             {q.fail !== true ? (
               <h3 className={styles.correct}>Pass</h3>

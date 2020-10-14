@@ -27,7 +27,8 @@
 
 /* Button */
 .save,
-.exit {
+.exit,
+.run {
   cursor: pointer;
   font-family: "Product Sans";
   font-size: 0.8rem;
@@ -60,4 +61,13 @@
   padding-left: 1.5rem;
   list-style: upper-alpha;
   margin-bottom: 1rem;
+}
+
+.code {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.run {
+  background: #566c8d;
 }

@@ -21,7 +21,7 @@
 }
 
 .code {
-  display: inline-flex;
+  width: 100%;
   margin: 1rem 0;
 }
 
@@ -56,8 +56,6 @@
 
 .item {
   margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
 }
 
 .choices {
@@ -67,11 +65,19 @@
 }
 
 .correct,
-.wrong {
+.wrong,
+.secondary {
   padding: 0.5rem 0.7rem;
   border-radius: 2px;
   color: white;
   display: inline-flex;
+}
+
+.correct,
+.wrong {
+  min-width: 5rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 .correct {
@@ -83,5 +89,9 @@
 }
 
 .info {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.secondary {
+  background-color: #566c8d;
 }

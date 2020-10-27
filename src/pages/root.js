@@ -18,7 +18,7 @@ function App() {
   const auth = useContext(AuthContext);
   if (!auth.state.isAuth) {
     return (
-      <main>
+      <main className={styles.landingContainer}>
         <Info />
         <Login dispatch={auth.dispatch}></Login>
       </main>

@@ -1,4 +1,8 @@
 /* Layout */
+.landingContainer {
+  display: flex;
+}
+
 .container {
   display: flex;
 }

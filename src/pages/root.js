@@ -21,11 +21,7 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <SideBar
-        dispatch={auth.dispatch}
-        username={auth.state.username}
-        role={auth.state.role}
-      />
+      <SideBar dispatch={auth.dispatch} username={auth.state.username} />
       <Wrapper current={current} setCurrent={setCurrent}>
         <Switch>
           <Route exact path="/">

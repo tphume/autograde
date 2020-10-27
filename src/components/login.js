@@ -7,14 +7,13 @@ import styles from "./login.module.css";
 function Login({ dispatch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("Student");
 
   async function submitForm(e) {
     e.preventDefault();
 
     try {
-      const { token } = await authenticate(username, password, role);
-      dispatch({ type: "LOGIN", payload: { role, username, token } });
+      const { token } = await authenticate(username, password);
+      dispatch({ type: "LOGIN", payload: { username, token } });
     } catch (error) {
       // TODO: add error displaying logic
       console.log(error);
@@ -50,17 +49,6 @@ function Login({ dispatch }) {
               required
               className={styles.inputText}
             ></input>
-          </div>
-          <div className={styles.dropDown}>
-            <label className={styles.inputLabel}>Role</label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className={styles.dropDownText}
-            >
-              <option value="Teacher">Teacher</option>
-              <option value="Student">Student</option>
-            </select>
           </div>
           <input type="submit" value="LOGIN" className={styles.login} />
         </form>

@@ -3,11 +3,11 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import styles from "./sidebar.module.css";
 
-function SideBar({ dispatch, username, role }) {
+function SideBar({ dispatch, username }) {
   return (
     <nav className={styles.container}>
       <h1 className={styles.title}>AutoGrade</h1>
-      <h6 className={styles.name}>{`${role} - ${username}`}</h6>
+      <h6 className={styles.name}>{username}</h6>
       <ul>
         <NavItem route="/overview" name="Overview" />
         <NavItem route="/grades" name="Grades" />

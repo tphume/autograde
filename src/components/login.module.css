@@ -1,13 +1,13 @@
 /* Layout */
 .container {
-  margin: 6vh auto 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   width: 20rem;
   background-color: white;
-  padding: 2rem;
   border-radius: 3px;
+  height: 100vh;
+  padding: 3vh 1rem;
 }
 
 .formContainer {

@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../contexts/auth";
+import Info from "../components/info";
 import Login from "../components/login";
 import SideBar from "../components/sidebar";
 import Wrapper from "../components/wrapper";
@@ -16,7 +17,12 @@ function App() {
 
   const auth = useContext(AuthContext);
   if (!auth.state.isAuth) {
-    return <Login dispatch={auth.dispatch}></Login>;
+    return (
+      <main>
+        <Info />
+        <Login dispatch={auth.dispatch}></Login>
+      </main>
+    );
   }
 
   return (

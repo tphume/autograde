@@ -69,20 +69,43 @@
   font-size: 0.8rem;
 }
 
+.signup {
+  margin: 5px auto;
+  color: #566c8d;
+}
+
+.signup,
+.signupButton {
+  font-size: 1rem;
+}
+
 /* Text variants */
 .inputText:focus {
   outline: none;
 }
 
+.signupButton:hover {
+  text-decoration: underline;
+}
+
 /* Others */
 .login {
   font-family: "Product Sans";
-  font-size: 0.8rem;
+  font-size: 1rem;
   background-color: #23395a;
   color: white;
   border: none;
   border-radius: 3px;
   padding: 5px 0px 5px 10px;
   text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.signupButton {
+  background: none;
+  border: none;
+  color: #23395a;
+  font-weight: 600;
   cursor: pointer;
 }

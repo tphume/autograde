@@ -52,6 +52,10 @@ function Login({ dispatch }) {
           </div>
           <input type="submit" value="LOGIN" className={styles.login} />
         </form>
+        <p className={styles.signup}>
+          Don't have an account?{" "}
+          <button className={styles.signupButton}>Signup</button>
+        </p>
       </section>
     </main>
   );

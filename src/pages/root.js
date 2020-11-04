@@ -11,6 +11,12 @@ import Grades from "./grades";
 import Labs from "./labs";
 
 import styles from "./root.module.css";
+import Slide01 from "../images/landing/slide-01.jpg";
+import Slide02 from "../images/landing/slide-02.jpg";
+import Slide03 from "../images/landing/slide-03.jpg";
+import Slide04 from "../images/landing/slide-04.jpg";
+
+const landingImages = [Slide01, Slide02, Slide03, Slide04];
 
 function App() {
   const [current, setCurrent] = useState("");
@@ -19,7 +25,7 @@ function App() {
   if (!auth.state.isAuth) {
     return (
       <main className={styles.landingContainer}>
-        <Slider />
+        <Slider slides={landingImages} />
         <Login dispatch={auth.dispatch}></Login>
       </main>
     );

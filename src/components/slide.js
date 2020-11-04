@@ -10,6 +10,7 @@ function Slide({ content }) {
         backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
         backgroundPosition: `center`,
+        flexShrink: `0`,
       }}
     />
   );

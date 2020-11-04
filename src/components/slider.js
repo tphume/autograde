@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import styles from "./slider.module.css";
-import SliderContent from "./sliderContent";
 import Slide from "./slide";
 
 function Slider({ slides }) {
@@ -20,6 +19,22 @@ function Slider({ slides }) {
         ))}
       </SliderContent>
     </section>
+  );
+}
+
+function SliderContent({ children, translate, transition }) {
+  return (
+    <div
+      style={{
+        transform: `translateX(-${translate}px)`,
+        transition: `transform ease-out ${transition}s`,
+        height: `100%`,
+        width: `100%`,
+        display: `flex`,
+      }}
+    >
+      {children}
+    </div>
   );
 }
 

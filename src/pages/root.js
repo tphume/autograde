@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "../contexts/auth";
-import Info from "../components/info";
+import Slider from "../components/slider";
 import Login from "../components/login";
 import SideBar from "../components/sidebar";
 import Wrapper from "../components/wrapper";
@@ -19,7 +19,7 @@ function App() {
   if (!auth.state.isAuth) {
     return (
       <main className={styles.landingContainer}>
-        <Info />
+        <Slider />
         <Login dispatch={auth.dispatch}></Login>
       </main>
     );

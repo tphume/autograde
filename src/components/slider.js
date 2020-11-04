@@ -1,8 +1,8 @@
 import React from "react";
 
-import styles from "./info.module.css";
+import styles from "./slider.module.css";
 
-function Info() {
+function Slider() {
   return (
     <section className={styles.container}>
       <h1>Placeholder</h1>
@@ -10,4 +10,4 @@ function Info() {
   );
 }
 
-export default Info;
+export default Slider;

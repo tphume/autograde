@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 import styles from "./slider.module.css";
+import SliderContent from "./sliderContent";
 
 function Slider() {
+  const [state, setState] = useState({
+    translate: 0,
+    transition: 0.45,
+  });
+
+  const { translate, transition } = state;
+
   return (
     <section className={styles.container}>
-      <h1>Placeholder</h1>
+      <SliderContent
+        translate={translate}
+        transition={transition}
+      ></SliderContent>
     </section>
   );
 }

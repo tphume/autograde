@@ -46,3 +46,20 @@
 .imgRight:focus {
   outline: 0;
 }
+
+/* Dot display */
+.dot {
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dots {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

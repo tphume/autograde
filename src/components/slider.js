@@ -90,4 +90,25 @@ function Arrow({ direction, handleClick }) {
   );
 }
 
+function Dot({ active }) {
+  return (
+    <span
+      className={styles.dot}
+      style={{
+        background: `${active ? "black" : "white"}`,
+      }}
+    />
+  );
+}
+
+function Dots({ slides, activeIndex }) {
+  return (
+    <div className={styles.dots}>
+      {slides.map((slide, i) => (
+        <Dot key={slide} active={activeIndex === i} />
+      ))}
+    </div>
+  );
+}
+
 export default Slider;

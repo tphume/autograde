@@ -55,6 +55,7 @@ function Slider({ slides }) {
       </SliderContent>
       <Arrow direction="left" handleClick={prevSlide} />
       <Arrow direction="right" handleClick={nextSlide} />
+      <Dots slides={slides} activeIndex={activeIndex} />
     </section>
   );
 }

@@ -3,3 +3,45 @@
   height: 100%;
   overflow: hidden;
 }
+
+/* Arrow component */
+.left,
+.right {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  transition: transform ease-in 0.1s;
+}
+
+.left:hover,
+.right:hover {
+  transform: scale(1.1);
+}
+
+.left {
+  left: 25px;
+}
+
+.right {
+  right: 25px;
+}
+
+.imgLeft {
+  transform: translateX(-2px);
+}
+
+.imgRight {
+  transform: translateX(2px);
+}
+
+.imgLeft:focus,
+.imgRight:focus {
+  outline: 0;
+}

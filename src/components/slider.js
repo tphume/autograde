@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 
-import styles from "./slider.module.css";
 import Slide from "./slide";
+import styles from "./slider.module.css";
+import rightArrow from "../images/utils/right-arrow.svg";
+import leftArrow from "../images/utils/left-arrow.svg";
 
 function Slider({ slides }) {
   const [state, setState] = useState({
@@ -34,6 +36,21 @@ function SliderContent({ children, translate, transition }) {
       }}
     >
       {children}
+    </div>
+  );
+}
+
+function Arrow({ direction, handleClick }) {
+  return (
+    <div
+      onClick={handleClick}
+      className={direction === "left" ? styles.left : styles.right}
+    >
+      {direction === "left" ? (
+        <img src={leftArrow} className={styles.imgLeft} alt="Left arrow" />
+      ) : (
+        <img src={rightArrow} className={styles.imgRight} alt="Right arrow" />
+      )}
     </div>
   );
 }

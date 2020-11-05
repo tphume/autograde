@@ -2,6 +2,7 @@
   width: 75%;
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 /* Arrow component */

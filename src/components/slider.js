@@ -7,11 +7,44 @@ import leftArrow from "../images/utils/left-arrow.svg";
 
 function Slider({ slides }) {
   const [state, setState] = useState({
+    activeIndex: 0,
     translate: 0,
     transition: 0.45,
   });
 
-  const { translate, transition } = state;
+  const { translate, transition, activeIndex } = state;
+
+  function nextSlide() {
+    if (activeIndex === slides.length - 1) {
+      return setState({
+        ...state,
+        translate: 0,
+        activeIndex: 0,
+      });
+    }
+
+    setState({
+      ...state,
+      translate: (activeIndex + 1) * 1080,
+      activeIndex: activeIndex + 1,
+    });
+  }
+
+  function prevSlide() {
+    if (activeIndex === 0) {
+      return setState({
+        ...state,
+        translate: (slides.length - 1) * 1080,
+        activeIndex: slides.length - 1,
+      });
+    }
+
+    setState({
+      ...state,
+      translate: (activeIndex - 1) * 1080,
+      activeIndex: activeIndex - 1,
+    });
+  }
 
   return (
     <section className={styles.container}>
@@ -20,6 +53,8 @@ function Slider({ slides }) {
           <Slide key={slide + i} content={slide} />
         ))}
       </SliderContent>
+      <Arrow direction="left" handleClick={prevSlide} />
+      <Arrow direction="right" handleClick={nextSlide} />
     </section>
   );
 }

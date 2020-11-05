@@ -1,0 +1,65 @@
+.container {
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Arrow component */
+.left,
+.right {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  width: 50px;
+  justify-content: center;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  transition: transform ease-in 0.1s;
+}
+
+.left:hover,
+.right:hover {
+  transform: scale(1.1);
+}
+
+.left {
+  left: 25px;
+}
+
+.right {
+  right: 25px;
+}
+
+.imgLeft {
+  transform: translateX(-2px);
+}
+
+.imgRight {
+  transform: translateX(2px);
+}
+
+.imgLeft:focus,
+.imgRight:focus {
+  outline: 0;
+}
+
+/* Dot display */
+.dot {
+  padding: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dots {
+  position: absolute;
+  bottom: 25px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,13 +1,13 @@
 /* Layout */
 .container {
-  margin: 6vh auto 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 20rem;
+  justify-content: flex-start;
+  width: 25%;
   background-color: white;
-  padding: 2rem;
   border-radius: 3px;
+  height: 100%;
+  padding: 3vh 1rem;
 }
 
 .formContainer {
@@ -54,8 +54,7 @@
 }
 
 .subTitle,
-.inputText,
-.dropDownText {
+.inputText {
   font-weight: 600;
 }
 
@@ -64,34 +63,49 @@
   font-size: 1rem;
 }
 
-.inputText,
-.dropDownText {
+.inputText {
   border: none;
   background-color: #f3f4f6;
   font-size: 0.8rem;
 }
 
-.dropDownText {
-  flex-grow: 1;
-  font-size: 0.8rem;
-  -webkit-appearance: button;
+.signup {
+  margin: 5px auto;
+  color: #566c8d;
+}
+
+.signup,
+.signupButton {
+  font-size: 1rem;
 }
 
 /* Text variants */
-.inputText:focus,
-.dropDownText:focus {
+.inputText:focus {
   outline: none;
+}
+
+.signupButton:hover {
+  text-decoration: underline;
 }
 
 /* Others */
 .login {
   font-family: "Product Sans";
-  font-size: 0.8rem;
+  font-size: 1rem;
   background-color: #23395a;
   color: white;
   border: none;
   border-radius: 3px;
   padding: 5px 0px 5px 10px;
   text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.signupButton {
+  background: none;
+  border: none;
+  color: #23395a;
+  font-weight: 600;
   cursor: pointer;
 }

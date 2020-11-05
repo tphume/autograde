@@ -5,10 +5,10 @@ export const AuthContext = React.createContext();
 function reducer(state, action) {
   switch (action.type) {
     case "LOGIN":
-      const { role, username, token } = action.payload;
-      return { isAuth: true, role, username, token };
+      const { username, token } = action.payload;
+      return { isAuth: true, username, token };
     case "LOGOUT":
-      return { isAuth: false, role: "", username: "", token: "" };
+      return { isAuth: false, username: "", token: "" };
     default:
       return state;
   }
@@ -21,7 +21,6 @@ function AuthContextProvider({ children }) {
       ? JSON.parse(localData)
       : {
           isAuth: false,
-          role: "",
           username: "",
           token: "",
         };

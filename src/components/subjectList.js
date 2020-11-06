@@ -17,7 +17,10 @@ function SubjectList({ subjects, current, setCurrent }) {
             >
               <h3 className={styles.name}>{s.name}</h3>
               <h6 className={styles.id}>{s.id}</h6>
-              <h4 className={styles.prof}>{s.prof}</h4>
+              <div className={styles.bottom}>
+                <h4 className={styles.prof}>{s.prof}</h4>
+                <button className={styles.info}>INFO</button>
+              </div>
             </li>
           );
         })}

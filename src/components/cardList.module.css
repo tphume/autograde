@@ -16,7 +16,12 @@
 
 .cardBottom {
   display: flex;
+  justify-content: space-between;
   margin: 2rem 0 0 0;
+}
+
+.innerBottom {
+  display: flex;
 }
 
 /* Text styling */
@@ -67,9 +72,28 @@
   background-color: #a4abbd;
 }
 
+.info {
+  font-family: "Product Sans";
+  font-size: 1rem;
+  background-color: white;
+  color: #a4abbd;
+  border: solid 1px #a4abbd;
+  border-radius: 3px;
+  padding: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 /* Variants */
 .card:hover {
   border: 3px solid #23395a;
+}
+
+.info:hover {
+  border: none;
+  background-color: #a4abbd;
+  color: white;
 }
 
 /* Others */

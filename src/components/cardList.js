@@ -64,14 +64,17 @@ function CardList({ current, api, detail, setdetail, children }) {
                 <h5 className={styles.date}>{`${s.start}-${s.due}`}</h5>
               </div>
               <div className={styles.cardBottom}>
-                <h4
-                  className={
-                    s.type === "Quiz" ? styles.typeQuiz : styles.typeProg
-                  }
-                >
-                  {s.type}
-                </h4>
-                <h4 className={statusClass}>{s.status}</h4>
+                <div className={styles.innerBottom}>
+                  <h4
+                    className={
+                      s.type === "Quiz" ? styles.typeQuiz : styles.typeProg
+                    }
+                  >
+                    {s.type}
+                  </h4>
+                  <h4 className={statusClass}>{s.status}</h4>
+                </div>
+                <button className={styles.info}>INFO</button>
               </div>
             </li>
           );

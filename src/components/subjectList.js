@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 import Modal from "./modal";
 
@@ -42,7 +43,7 @@ function Info({ modal, id, desc }) {
     return (
       <Modal>
         <div className={styles.markdownWrapper}>
-          <ReactMarkdown children={desc} />
+          <ReactMarkdown plugins={[gfm]} children={desc} />
         </div>
       </Modal>
     );

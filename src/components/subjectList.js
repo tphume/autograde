@@ -29,7 +29,7 @@ function SubjectList({ subjects, current, setCurrent }) {
                   INFO
                 </button>
               </div>
-              <Info modal={modal} id={s.id} desc={s.desc} />
+              <Info modal={modal} id={s.id} desc={s.desc} setmodal={setModal} />
             </li>
           );
         })}
@@ -38,12 +38,17 @@ function SubjectList({ subjects, current, setCurrent }) {
   );
 }
 
-function Info({ modal, id, desc }) {
+function Info({ modal, id, desc, setmodal }) {
   if (modal === id) {
     return (
       <Modal>
         <div className={styles.markdownWrapper}>
           <ReactMarkdown plugins={[gfm]} children={desc} />
+        </div>
+        <div className={styles.footer}>
+          <button className={styles.exit} onClick={() => setmodal("")}>
+            EXIT
+          </button>
         </div>
       </Modal>
     );

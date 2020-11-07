@@ -7,10 +7,14 @@ async function fetchSubjectList(token) {
       name: "Python",
       prof: "Dr.Snake Cobra",
       desc: `
-      # About Python
-      Python is a strong language for beginners.
-      There are many resources available for programmers of all levels, 
-      the code is highly readable, and in many cases phrases are comparable to those in the English language.
+# About Python
+- [Overview](#overview)
+- [Usecase](#usecase)
+## Overview
+**Python** is a strong language for beginners.
+There are many resources available for programmers of all levels, 
+the code is highly readable, and in many cases phrases are comparable to those in the English language.
+## Usecase
       `,
     },
     {
@@ -18,11 +22,15 @@ async function fetchSubjectList(token) {
       name: "C++",
       prof: "Dr.Eye Glasses",
       desc: `
-      # About C++
-      C++ (pronounced cee plus plus) is a general purpose programming language developed by Bjarne Stroustrup
-      starting in 1979 at Bell Labs. It is immensely popular, particularly for applications that require speed
-      and/or access to some low-level features. It is considered to be an intermediate level language,
-      as it encapsulates both high and low level language features.
+# About C++
+- [Overview](#overview)
+- [Usecase](#usecase)
+## Overview
+**C++** (pronounced cee plus plus) is a general purpose programming language developed by Bjarne Stroustrup
+starting in 1979 at Bell Labs. It is immensely popular, particularly for applications that require speed
+and/or access to some low-level features. It is considered to be an intermediate level language,
+as it encapsulates both high and low level language features.
+## Usecase
       `,
     },
   ];

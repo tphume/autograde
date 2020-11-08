@@ -12,6 +12,9 @@ async function fetchStudentGradeList(token, subject) {
         status: "Pass",
         start: "09/10/2020",
         due: "17/10/2020",
+        desc: `
+# C++ Programming Assignment
+        `,
       },
       {
         id: "0430948389",
@@ -20,6 +23,9 @@ async function fetchStudentGradeList(token, subject) {
         status: "Pass",
         start: "09/10/2020",
         due: "17/10/2020",
+        desc: `
+# C++ Quiz
+        `,
       },
     ];
   }
@@ -32,6 +38,9 @@ async function fetchStudentGradeList(token, subject) {
       status: "Pass",
       start: "09/10/2020",
       due: "17/10/2020",
+      desc: `
+# Python Programming Assignment
+      `,
     },
     {
       id: "7410948389",
@@ -40,6 +49,9 @@ async function fetchStudentGradeList(token, subject) {
       status: "Pass",
       start: "09/10/2020",
       due: "17/10/2020",
+      desc: `
+# Python Quiz
+      `,
     },
     {
       id: "9430948198",
@@ -48,6 +60,9 @@ async function fetchStudentGradeList(token, subject) {
       status: "Fail",
       start: "04/10/2020",
       due: "09/10/2020",
+      desc: `
+# Python Programming Assignment
+      `,
     },
     {
       id: "6560948389",
@@ -56,6 +71,9 @@ async function fetchStudentGradeList(token, subject) {
       status: "Pass",
       start: "04/10/2020",
       due: "09/10/2020",
+      desc: `
+# Python Quiz
+      `,
     },
   ];
 }

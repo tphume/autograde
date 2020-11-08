@@ -12,6 +12,9 @@ async function fetchStudentLabList(token, subject) {
         status: "Grading",
         start: "10/10/2020",
         due: "10/20/2020",
+        desc: `
+# C++ Programming Assignment
+        `,
       },
       {
         id: "0030948389",
@@ -20,6 +23,9 @@ async function fetchStudentLabList(token, subject) {
         status: "Pending",
         start: "10/10/2020",
         due: "20/10/2020",
+        desc: `
+# C++ Quiz
+        `,
       },
     ];
   }
@@ -32,6 +38,9 @@ async function fetchStudentLabList(token, subject) {
       status: "Late",
       start: "10/10/2020",
       due: "20/10/2020",
+      desc: `
+# Python Programming Assignment
+        `,
     },
     {
       id: "7410948389",
@@ -40,6 +49,9 @@ async function fetchStudentLabList(token, subject) {
       status: "Grading",
       start: "10/10/2020",
       due: "20/10/2020",
+      desc: `
+# Quiz Programming Assignment
+        `,
     },
     {
       id: "9430948198",
@@ -48,6 +60,9 @@ async function fetchStudentLabList(token, subject) {
       status: "Pending",
       start: "10/10/2020",
       due: "30/10/2020",
+      desc: `
+# Python Programming Assignment
+        `,
     },
     {
       id: "6560948389",
@@ -56,6 +71,9 @@ async function fetchStudentLabList(token, subject) {
       status: "Pending",
       start: "10/10/2020",
       due: "30/10/2020",
+      desc: `
+# Quiz Programming Assignment
+        `,
     },
   ];
 }

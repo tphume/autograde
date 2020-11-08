@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { AuthContext } from "../contexts/auth";
 import Modal from "../components/modal";
+import Info from "./info";
 
 import styles from "./cardList.module.css";
 
@@ -11,6 +12,7 @@ function CardList({ current, api, detail, setdetail, children }) {
   } = useContext(AuthContext);
 
   const [state, setState] = useState([]);
+  const [info, setInfo] = useState({ id: "" });
 
   useEffect(() => {
     async function temp() {
@@ -74,12 +76,15 @@ function CardList({ current, api, detail, setdetail, children }) {
                   </h4>
                   <h4 className={statusClass}>{s.status}</h4>
                 </div>
-                <button className={styles.info}>INFO</button>
+                <button className={styles.info} onClick={() => setInfo(s)}>
+                  INFO
+                </button>
               </div>
             </li>
           );
         })}
       </ul>
+      <Info info={info} setinfo={setInfo} />
       {detail !== "" && <Modal>{children}</Modal>}
     </>
   );

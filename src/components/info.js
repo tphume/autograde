@@ -6,23 +6,24 @@ import Modal from "./modal";
 
 import styles from "./info.module.css";
 
-function Info({ modal, id, desc, setmodal }) {
-  if (modal === id) {
-    return (
-      <Modal>
-        <div className={styles.markdownWrapper}>
-          <ReactMarkdown plugins={[gfm]} children={desc} />
-        </div>
-        <div className={styles.footer}>
-          <button className={styles.exit} onClick={() => setmodal("")}>
-            EXIT
-          </button>
-        </div>
-      </Modal>
-    );
+function Info({ info, setinfo }) {
+  console.log(info);
+  if (info.id === "") {
+    return <></>;
   }
 
-  return <></>;
+  return (
+    <Modal>
+      <div className={styles.markdownWrapper}>
+        <ReactMarkdown plugins={[gfm]} children={info.desc} />
+      </div>
+      <div className={styles.footer}>
+        <button className={styles.exit} onClick={() => setinfo({ id: "" })}>
+          EXIT
+        </button>
+      </div>
+    </Modal>
+  );
 }
 
 export default Info;

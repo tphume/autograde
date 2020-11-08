@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
 
-import Modal from "./modal";
+import Info from "./info";
 
 import styles from "./subjectList.module.css";
 
@@ -36,25 +34,6 @@ function SubjectList({ subjects, current, setCurrent }) {
       </ul>
     </section>
   );
-}
-
-function Info({ modal, id, desc, setmodal }) {
-  if (modal === id) {
-    return (
-      <Modal>
-        <div className={styles.markdownWrapper}>
-          <ReactMarkdown plugins={[gfm]} children={desc} />
-        </div>
-        <div className={styles.footer}>
-          <button className={styles.exit} onClick={() => setmodal("")}>
-            EXIT
-          </button>
-        </div>
-      </Modal>
-    );
-  }
-
-  return <></>;
 }
 
 export default SubjectList;

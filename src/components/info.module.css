@@ -1,0 +1,29 @@
+.markdownWrapper {
+  max-height: 37.5rem;
+  overflow: scroll;
+  padding: 1rem 2rem;
+  list-style: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  bottom: 0;
+  border-top: 2px solid #f3f4f6;
+  width: 100%;
+  padding: 0.7rem;
+}
+
+.exit {
+  cursor: pointer;
+  font-family: "Product Sans";
+  font-size: 0.8rem;
+  min-width: 6rem;
+  color: white;
+  background-color: #c53a2a;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem;
+  font-weight: 700;
+}

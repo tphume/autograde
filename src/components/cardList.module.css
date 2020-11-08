@@ -6,7 +6,6 @@
   padding: 1rem;
   width: 30rem;
   border-radius: 5px;
-  cursor: pointer;
 }
 
 .cardTop {
@@ -72,7 +71,8 @@
   background-color: #a4abbd;
 }
 
-.info {
+.info,
+.view {
   font-family: "Product Sans";
   font-size: 1rem;
   background-color: white;
@@ -83,17 +83,25 @@
   text-align: left;
   cursor: pointer;
   font-weight: 600;
+  margin-left: 5px;
+}
+
+.view {
+  background-color: #23395a;
+  color: white;
 }
 
 /* Variants */
-.card:hover {
-  border: 3px solid #23395a;
-}
 
 .info:hover {
   border: none;
   background-color: #a4abbd;
   color: white;
+}
+
+.view:hover {
+  background-color: white;
+  color: #23395a;
 }
 
 /* Others */

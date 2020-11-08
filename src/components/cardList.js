@@ -53,11 +53,7 @@ function CardList({ current, api, detail, setdetail, children }) {
           }
 
           return (
-            <li
-              key={s.id}
-              className={styles.card}
-              onClick={() => setdetail(s.id)}
-            >
+            <li key={s.id} className={styles.card}>
               <div className={styles.cardTop}>
                 <div>
                   <h3 className={styles.name}>{s.name}</h3>
@@ -76,9 +72,17 @@ function CardList({ current, api, detail, setdetail, children }) {
                   </h4>
                   <h4 className={statusClass}>{s.status}</h4>
                 </div>
-                <button className={styles.info} onClick={() => setInfo(s)}>
-                  INFO
-                </button>
+                <div>
+                  <button
+                    className={styles.view}
+                    onClick={() => setdetail(s.id)}
+                  >
+                    VIEW
+                  </button>
+                  <button className={styles.info} onClick={() => setInfo(s)}>
+                    INFO
+                  </button>
+                </div>
               </div>
             </li>
           );

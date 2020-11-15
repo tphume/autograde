@@ -7,7 +7,6 @@ import Modal from "./modal";
 import styles from "./info.module.css";
 
 function Info({ info, setinfo }) {
-  console.log(info);
   if (info.id === "") {
     return <></>;
   }
@@ -15,7 +14,7 @@ function Info({ info, setinfo }) {
   return (
     <Modal>
       <div className={styles.markdownWrapper}>
-        <ReactMarkdown plugins={[gfm]} children={info.desc} />
+        <ReactMarkdown plugins={[gfm]} children={info.description} />
       </div>
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setinfo({ id: "" })}>

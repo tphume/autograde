@@ -9,10 +9,8 @@ async function fetchStudentLabList(token, subject) {
         id: "775958198",
         name: "C++ Lab 2",
         type: "Programming Assignment",
-        status: "Grading",
-        start: "10/10/2020",
-        due: "10/20/2020",
-        desc: `
+        due_date: "10/20/2020",
+        description: `
 # C++ Programming Assignment
         `,
       },
@@ -20,10 +18,8 @@ async function fetchStudentLabList(token, subject) {
         id: "0030948389",
         name: "Data types in C++ 2",
         type: "Quiz",
-        status: "Pending",
-        start: "10/10/2020",
-        due: "20/10/2020",
-        desc: `
+        due_date: "20/10/2020",
+        description: `
 # C++ Quiz
         `,
       },
@@ -35,10 +31,8 @@ async function fetchStudentLabList(token, subject) {
       id: "3430958198",
       name: "Python Lab 3",
       type: "Programming Assignment",
-      status: "Late",
-      start: "10/10/2020",
-      due: "20/10/2020",
-      desc: `
+      due_date: "20/10/2020",
+      description: `
 # Python Programming Assignment
         `,
     },
@@ -46,10 +40,8 @@ async function fetchStudentLabList(token, subject) {
       id: "7410948389",
       name: "Data types in Python 3",
       type: "Quiz",
-      status: "Grading",
-      start: "10/10/2020",
-      due: "20/10/2020",
-      desc: `
+      due_date: "20/10/2020",
+      description: `
 # Quiz Programming Assignment
         `,
     },
@@ -57,10 +49,8 @@ async function fetchStudentLabList(token, subject) {
       id: "9430948198",
       name: "Python Lab 4",
       type: "Programming Assignment",
-      status: "Pending",
-      start: "10/10/2020",
-      due: "30/10/2020",
-      desc: `
+      due_date: "30/10/2020",
+      description: `
 # Python Programming Assignment
         `,
     },
@@ -68,10 +58,8 @@ async function fetchStudentLabList(token, subject) {
       id: "6560948389",
       name: "Data types in Python 4",
       type: "Quiz",
-      status: "Pending",
-      start: "10/10/2020",
-      due: "30/10/2020",
-      desc: `
+      due_date: "30/10/2020",
+      description: `
 # Quiz Programming Assignment
         `,
     },
@@ -90,22 +78,26 @@ async function fetchLabDetail(token, id) {
   ) {
     return {
       type: "Prog",
-      total: "5",
       questions: [
         {
           question: "This is just an example question?",
+          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
+          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
+          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
+          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
+          studentAnswer: "",
         },
       ],
     };
@@ -113,27 +105,31 @@ async function fetchLabDetail(token, id) {
 
   return {
     type: "Quiz",
-    total: "5",
     questions: [
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        studentAnswer: "",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        studentAnswer: "",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        studentAnswer: "",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        studentAnswer: "",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
+        studentAnswer: "",
       },
     ],
   };

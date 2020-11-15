@@ -35,11 +35,7 @@
 }
 
 .typeProg,
-.typeQuiz,
-.statusPass,
-.statusFail,
-.statusPending,
-.statusGrading {
+.typeQuiz {
   color: white;
   padding: 0.2rem 0.5rem;
   margin: 0 0.5rem 0 0;
@@ -52,23 +48,6 @@
 
 .typeQuiz {
   background-color: #f5a4d0;
-}
-
-.statusPass {
-  background-color: #89dd80;
-}
-
-.statusFail,
-.statusLate {
-  background-color: #c53a2a;
-}
-
-.statusGrading {
-  background-color: #d9a21b;
-}
-
-.statusPending {
-  background-color: #a4abbd;
 }
 
 .info,

@@ -35,23 +35,6 @@ function CardList({ current, api, detail, setdetail, children }) {
     <>
       <ul>
         {state.map((s) => {
-          let statusClass;
-
-          switch (s.status) {
-            case "Pass":
-              statusClass = styles.statusPass;
-              break;
-            case "Fail":
-            case "Late":
-              statusClass = styles.statusFail;
-              break;
-            case "Grading":
-              statusClass = styles.statusGrading;
-              break;
-            default:
-              statusClass = styles.statusPending;
-          }
-
           return (
             <li key={s.id} className={styles.card}>
               <div className={styles.cardTop}>
@@ -59,7 +42,7 @@ function CardList({ current, api, detail, setdetail, children }) {
                   <h3 className={styles.name}>{s.name}</h3>
                   <h6 className={styles.id}>{s.id}</h6>
                 </div>
-                <h5 className={styles.date}>{`${s.start}-${s.due}`}</h5>
+                <h5 className={styles.date}>{s.due_date}</h5>
               </div>
               <div className={styles.cardBottom}>
                 <div className={styles.innerBottom}>
@@ -70,7 +53,6 @@ function CardList({ current, api, detail, setdetail, children }) {
                   >
                     {s.type}
                   </h4>
-                  <h4 className={statusClass}>{s.status}</h4>
                 </div>
                 <div>
                   <button

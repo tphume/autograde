@@ -6,7 +6,7 @@ async function fetchSubjectList(token) {
       id: "100434324",
       name: "Python",
       prof: "Dr.Snake Cobra",
-      desc: `
+      description: `
 # About Python
 - [Overview](#overview)
 - [Usecase](#usecase)
@@ -21,7 +21,7 @@ the code is highly readable, and in many cases phrases are comparable to those i
       id: "100543432",
       name: "C++",
       prof: "Dr.Eye Glasses",
-      desc: `
+      description: `
 # About C++
 - [Overview](#overview)
 - [Usecase](#usecase)

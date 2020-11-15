@@ -27,8 +27,7 @@ function GradeModal({ setdetail, detail }) {
   return (
     <section>
       <h2 className={styles.title}>
-        For this assignment you scored{" "}
-        <span className={styles.score}>{`${state.points}/${state.total}`}</span>
+        For this assignment you scored {state.grade}
       </h2>
       {state.type === "Quiz" ? Quiz(state) : <></>}
       {state.type === "Prog" ? Prog(state) : <></>}
@@ -55,10 +54,10 @@ function Quiz(s) {
             </ol>
             <h3
               className={
-                q.userAnswer === q.answer ? styles.correct : styles.wrong
+                q.studentAnswer === q.answer ? styles.correct : styles.wrong
               }
             >
-              You answered {q.userAnswer} - Correct answer {q.answer}
+              You answered {q.studentAnswer} - Correct answer {q.answer}
             </h3>
           </li>
         );
@@ -74,7 +73,11 @@ function Prog(s) {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            <textarea readOnly className={styles.code} value={q.userAnswer} />
+            <textarea
+              readOnly
+              className={styles.code}
+              value={q.studentAnswer}
+            />
             {q.fail !== true ? (
               <h3 className={styles.correct}>Pass</h3>
             ) : (

@@ -27,7 +27,8 @@ function LabModal({ setdetail, detail }) {
   return (
     <section>
       <h2 className={styles.title}>
-        There are {state.total} questions in total
+        There are {state.questions ? state.questions.length : ""} questions in
+        total
       </h2>
       {state.type === "Quiz" ? Quiz(state) : <></>}
       {state.type === "Prog" ? Prog(state) : <></>}
@@ -77,7 +78,8 @@ function Prog(s) {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            <textarea className={styles.code} value={q.userAnswer} />
+            {/* This text area needs to be replaced with code editor component */}
+            <textarea className={styles.code} value={q.studentAnswer} />
             <button className={styles.run}>Run</button>
           </li>
         );

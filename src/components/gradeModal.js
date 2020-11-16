@@ -62,7 +62,7 @@ function Quiz(s) {
                 q.studentAnswer === q.answer ? styles.correct : styles.wrong
               }
             >
-              You answered {q.studentAnswer} - Correct answer {q.answer}
+              STUDENT ANSWER [{q.studentAnswer}]
             </h3>
           </li>
         );

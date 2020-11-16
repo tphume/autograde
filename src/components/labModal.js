@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import AceEditor from "react-ace";
 
 import { fetchLabDetail } from "../repo/lab";
 import { AuthContext } from "../contexts/auth";
+
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/theme-monokai";
 
 import styles from "./labModal.module.css";
 
@@ -31,7 +36,7 @@ function LabModal({ lang, setdetail, detail }) {
         total
       </h2>
       {state.type === "Quiz" ? Quiz(state) : <></>}
-      {state.type === "Prog" ? Prog(state) : <></>}
+      {state.type === "Prog" ? Prog(state, setState, lang) : <></>}
       <div className={styles.footer}>
         <button className={styles.save}>SAVE</button>
         <button className={styles.exit} onClick={() => setdetail("")}>
@@ -71,15 +76,26 @@ function Quiz(s) {
   );
 }
 
-function Prog(s) {
+function Prog(state, setState, lang) {
   return (
     <ul className={styles.questions}>
-      {s.questions.map((q, i) => {
+      {state.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            {/* This text area needs to be replaced with code editor component */}
-            <textarea className={styles.code} value={q.studentAnswer} />
+            <AceEditor
+              name={i.toString()}
+              mode={lang}
+              theme="monokai"
+              value={q.studentAnswer}
+              fontSize={14}
+              onChange={(v) => {
+                let newState = { ...state };
+                newState.questions[i].studentAnswer = v;
+                setState(newState);
+              }}
+              style={{ width: `100%`, margin: `1rem 0` }}
+            />
             <button className={styles.run}>Run</button>
           </li>
         );

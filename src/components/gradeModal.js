@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/auth";
 
 import styles from "./gradeModal.module.css";
 
-function GradeModal({ setdetail, detail }) {
+function GradeModal({ lang, setdetail, detail }) {
   const {
     state: { token },
   } = useContext(AuthContext);

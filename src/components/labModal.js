@@ -5,7 +5,7 @@ import { AuthContext } from "../contexts/auth";
 
 import styles from "./labModal.module.css";
 
-function LabModal({ setdetail, detail }) {
+function LabModal({ lang, setdetail, detail }) {
   const {
     state: { token },
   } = useContext(AuthContext);

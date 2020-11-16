@@ -38,7 +38,7 @@ function LabModal({ lang, setdetail, detail }) {
       {state.type === "Quiz" ? Quiz(state) : <></>}
       {state.type === "Prog" ? Prog(state, setState, lang) : <></>}
       <div className={styles.footer}>
-        <button className={styles.save}>SAVE</button>
+        <button className={styles.submit}>SUBMIT</button>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT
         </button>
@@ -96,7 +96,7 @@ function Prog(state, setState, lang) {
               }}
               style={{ width: `100%`, margin: `1rem 0` }}
             />
-            <button className={styles.run}>Run</button>
+            <button className={styles.save}>Save</button>
           </li>
         );
       })}

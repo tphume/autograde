@@ -26,9 +26,9 @@
 }
 
 /* Button */
-.save,
+.submit,
 .exit,
-.run {
+.save {
   cursor: pointer;
   font-family: "Product Sans";
   font-size: 0.8rem;
@@ -41,7 +41,7 @@
   font-weight: 700;
 }
 
-.save {
+.submit {
   background-color: #89dd80;
 }
 
@@ -68,6 +68,6 @@
   margin: 1rem 0;
 }
 
-.run {
+.save {
   background: #566c8d;
 }

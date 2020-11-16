@@ -7,20 +7,20 @@ async function fetchStudentGradeList(token, subject) {
     return [
       {
         id: "875958198",
-        name: "C++ Lab 1",
+        name: "Javascript Lab 1",
         type: "Programming Assignment",
         due_date: "17/10/2020",
         description: `
-# C++ Programming Assignment
+# Javascript Programming Assignment
         `,
       },
       {
         id: "0430948389",
-        name: "Data types in C++ 1",
+        name: "Data types in Javascript 1",
         type: "Quiz",
         due_date: "17/10/2020",
         description: `
-# C++ Quiz
+# Javascript Quiz
         `,
       },
     ];
@@ -110,32 +110,32 @@ async function fetchGradeDetail(token, id) {
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "B",
-        answer: "B",
+        studentAnswer: "someanswer",
+        answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
         studentAnswer: "B",
-        answer: "C",
+        answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "A",
-        answer: "A",
+        studentAnswer: "someanswer",
+        answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
         studentAnswer: "D",
-        answer: "B",
+        answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "B",
-        answer: "B",
+        studentAnswer: "someanswer",
+        answer: "someanswer",
       },
     ],
   };

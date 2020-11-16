@@ -19,7 +19,11 @@ function Labs({ current }) {
         detail={detail}
         setdetail={setDetail}
       >
-        <LabModal setdetail={setDetail} detail={detail} />
+        <LabModal
+          lang={current.name.toLowerCase()}
+          setdetail={setDetail}
+          detail={detail}
+        />
       </CardList>
     </>
   );

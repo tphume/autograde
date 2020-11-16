@@ -19,7 +19,7 @@ import Slide04 from "../images/landing/slide-04.jpg";
 const landingImages = [Slide01, Slide02, Slide03, Slide04];
 
 function App() {
-  const [current, setCurrent] = useState("");
+  const [current, setCurrent] = useState({ id: "", name: "" });
 
   const auth = useContext(AuthContext);
   if (!auth.state.isAuth) {

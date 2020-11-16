@@ -7,20 +7,20 @@ async function fetchStudentLabList(token, subject) {
     return [
       {
         id: "775958198",
-        name: "C++ Lab 2",
+        name: "Javascript Lab 2",
         type: "Programming Assignment",
         due_date: "10/20/2020",
         description: `
-# C++ Programming Assignment
+# Javascript Programming Assignment
         `,
       },
       {
         id: "0030948389",
-        name: "Data types in C++ 2",
+        name: "Data types in Javascript 2",
         type: "Quiz",
         due_date: "20/10/2020",
         description: `
-# C++ Quiz
+# Javascript Quiz
         `,
       },
     ];
@@ -71,11 +71,7 @@ async function fetchLabDetail(token, id) {
   // this is currently a mock api call that will always succeed
   if (id === "") return [];
 
-  if (
-    id === "775958198" ||
-    id === "3430958198" ||
-    id === "Programming Assignment"
-  ) {
+  if (id === "775958198" || id === "3430958198" || id === "9430948198") {
     return {
       type: "Prog",
       questions: [

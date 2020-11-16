@@ -13,13 +13,13 @@ function Overview({ current }) {
 
   useEffect(() => {
     async function temp() {
-      setState(await fetchOverview(token, current));
+      setState(await fetchOverview(token, current.id));
     }
 
     temp();
-  }, [token, current]);
+  }, [token, current.id]);
 
-  if (current === "") {
+  if (current.id === "") {
     return <></>;
   }
 
@@ -29,7 +29,7 @@ function Overview({ current }) {
         <h2>Grades</h2>
         <p>
           There have been a total of{" "}
-          <span className={styles.total}>{state.grades.total}</span> assigments
+          <span className={styles.total}>{state.grades.total}</span> assignments
           graded
         </p>
         <p>

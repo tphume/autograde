@@ -24,7 +24,7 @@ function Wrapper({ children, current, setCurrent }) {
 
     temp();
 
-    return () => setCurrent("");
+    return () => setCurrent({ id: "", name: "" });
   }, [token, setCurrent]);
 
   return (

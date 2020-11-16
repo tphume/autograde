@@ -19,7 +19,11 @@ function Grade({ current }) {
         detail={detail}
         setdetail={setDetail}
       >
-        <GradeModal setdetail={setDetail} detail={detail} />
+        <GradeModal
+          lang={current.name.toLowerCase()}
+          setdetail={setDetail}
+          detail={detail}
+        />
       </CardList>
     </>
   );

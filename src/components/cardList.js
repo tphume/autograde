@@ -17,17 +17,17 @@ function CardList({ current, api, detail, setdetail, children }) {
   useEffect(() => {
     async function temp() {
       try {
-        setState(await api(token, current));
+        setState(await api(token, current.id));
       } catch (error) {
         console.log(error);
       }
     }
 
     temp();
-  }, [token, current, api]);
+  }, [token, current.id, api]);
 
   // Return nothing if have not selected subject
-  if (current === "") {
+  if (current.id === "") {
     return <></>;
   }
 

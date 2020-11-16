@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
+import AceEditor from "react-ace";
 
 import { fetchGradeDetail } from "../repo/grade";
 import { AuthContext } from "../contexts/auth";
+
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/theme-monokai";
 
 import styles from "./gradeModal.module.css";
 
@@ -30,7 +35,7 @@ function GradeModal({ lang, setdetail, detail }) {
         For this assignment you scored {state.grade}
       </h2>
       {state.type === "Quiz" ? Quiz(state) : <></>}
-      {state.type === "Prog" ? Prog(state) : <></>}
+      {state.type === "Prog" ? Prog(state, lang) : <></>}
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT
@@ -66,33 +71,22 @@ function Quiz(s) {
   );
 }
 
-function Prog(s) {
+function Prog(s, lang) {
   return (
     <ul className={styles.questions}>
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
-            <textarea
-              readOnly
-              className={styles.code}
+            <AceEditor
+              name={i.toString()}
+              mode={lang}
+              theme="monokai"
               value={q.studentAnswer}
+              fontSize={14}
+              style={{ width: `100%`, margin: `1rem 0` }}
+              readOnly
             />
-            {q.fail !== true ? (
-              <h3 className={styles.correct}>Pass</h3>
-            ) : (
-              <>
-                <p className={styles.info}>
-                  Expected output{" "}
-                  <span className={styles.secondary}>{q.expect}</span>
-                </p>
-                <p className={styles.info}>
-                  Output from user's code -{" "}
-                  <span className={styles.secondary}>{q.got}</span>
-                </p>
-                <h3 className={styles.wrong}>Fail</h3>
-              </>
-            )}
           </li>
         );
       })}

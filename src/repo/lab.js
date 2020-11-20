@@ -73,6 +73,7 @@ async function fetchLabDetail(token, id) {
 
   if (id === "775958198" || id === "3430958198" || id === "9430948198") {
     return {
+      id,
       type: "Prog",
       questions: [
         {
@@ -100,6 +101,7 @@ async function fetchLabDetail(token, id) {
   }
 
   return {
+    id,
     type: "Quiz",
     questions: [
       {
@@ -131,4 +133,12 @@ async function fetchLabDetail(token, id) {
   };
 }
 
-export { fetchStudentLabList, fetchLabDetail };
+async function saveQuestion(token, { username, assignment, question, answer }) {
+  //TODO: call api endpoint to save student's question
+}
+
+async function submitLab(token, { course_id, username }) {
+  //TODO: call api endpoint to submit entire lab
+}
+
+export { fetchStudentLabList, fetchLabDetail, saveQuestion, submitLab };

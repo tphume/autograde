@@ -19,7 +19,7 @@ function LabModal({ lang, setdetail, detail }) {
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchLabDetail(token, detail);
+        const q = await fetchLabDetail(token, { username, course_id: detail });
         setState(q);
       } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ function LabModal({ lang, setdetail, detail }) {
     }
 
     temp();
-  }, [detail, token]);
+  }, [detail, token, username]);
 
   return (
     <section>

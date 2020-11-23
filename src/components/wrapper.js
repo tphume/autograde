@@ -1,22 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 import { fetchSubjectList } from "../repo/subject";
 
-import { AuthContext } from "../contexts/auth";
 import SubjectList from "../components/subjectList";
 
 import styles from "./wrapper.module.css";
 
 function Wrapper({ children, current, setCurrent }) {
-  const {
-    state: { token },
-  } = useContext(AuthContext);
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     async function temp() {
       try {
-        setSubjects(await fetchSubjectList(token));
+        setSubjects(await fetchSubjectList());
       } catch (error) {
         console.log(error);
       }
@@ -25,7 +21,7 @@ function Wrapper({ children, current, setCurrent }) {
     temp();
 
     return () => setCurrent({ id: "", name: "" });
-  }, [token, setCurrent]);
+  }, [setCurrent]);
 
   return (
     <main className={styles.container}>

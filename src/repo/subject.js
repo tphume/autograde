@@ -1,4 +1,4 @@
-async function fetchSubjectList(token) {
+async function fetchSubjectList() {
   //TODO: call api endpoint to fetch list of subjects
   // this is currently a mock api call that will always succeed
   return [

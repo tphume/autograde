@@ -1,8 +1,12 @@
 async function fetchStudentLabList(token, { username, course_id }) {
-  //TODO: call api endpoint to fetch a student ungraded lab
-  // this is currently a mock api call that will always succeed
   if (course_id === "") return [];
 
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to fetch a student ungraded lab
+    return;
+  }
+
+  // Below is the mock api
   if (course_id === "100543432") {
     return [
       {
@@ -67,10 +71,14 @@ async function fetchStudentLabList(token, { username, course_id }) {
 }
 
 async function fetchLabDetail(token, { username, course_id }) {
-  //TODO: call api endpoint to fetch a student grade individual detail
-  // this is currently a mock api call that will always succeed
   if (course_id === "") return [];
 
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to fetch a student grade individual detail
+    return;
+  }
+
+  // Below is the mock api
   if (
     course_id === "775958198" ||
     course_id === "3430958198" ||
@@ -138,11 +146,17 @@ async function fetchLabDetail(token, { username, course_id }) {
 }
 
 async function saveQuestion(token, { username, assignment, question, answer }) {
-  //TODO: call api endpoint to save student's question
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to save student's question
+    return;
+  }
 }
 
 async function submitLab(token, { course_id, username }) {
-  //TODO: call api endpoint to submit entire lab
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to submit entire lab
+    return;
+  }
 }
 
 export { fetchStudentLabList, fetchLabDetail, saveQuestion, submitLab };

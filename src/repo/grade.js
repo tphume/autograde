@@ -1,9 +1,13 @@
-async function fetchStudentGradeList(token, subject) {
-  //TODO: call api endpoint to fetch a student grade list by subject
-  // this is currently a mock api call that will always succeed
-  if (subject === "") return [];
+async function fetchStudentGradeList(token, { username, course_id }) {
+  if (course_id === "") return [];
 
-  if (subject === "100543432") {
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to fetch a student grade list by subject
+    return;
+  }
+
+  // Below is the mock api
+  if (course_id === "100543432") {
     return [
       {
         id: "875958198",
@@ -66,12 +70,20 @@ async function fetchStudentGradeList(token, subject) {
   ];
 }
 
-async function fetchGradeDetail(token, id) {
-  //TODO: call api endpoint to fetch a student grade individual detail
-  // this is currently a mock api call that will always succeed
-  if (id === "") return [];
+async function fetchGradeDetail(token, { username, course_id }) {
+  if (course_id === "") return [];
 
-  if (id === "875958198" || id === "3430958198" || id === "9430948198") {
+  if (process.env.NODE_ENV === "production") {
+    //TODO: call api endpoint to fetch a student grade individual detail
+    return;
+  }
+
+  // Below is the mock api
+  if (
+    course_id === "875958198" ||
+    course_id === "3430958198" ||
+    course_id === "9430948198"
+  ) {
     return {
       type: "Prog",
       grade: 4,

@@ -8,7 +8,7 @@ import styles from "./cardList.module.css";
 
 function CardList({ current, api, detail, setdetail, children }) {
   const {
-    state: { token },
+    state: { token, username },
   } = useContext(AuthContext);
 
   const [state, setState] = useState([]);
@@ -17,14 +17,14 @@ function CardList({ current, api, detail, setdetail, children }) {
   useEffect(() => {
     async function temp() {
       try {
-        setState(await api(token, current.id));
+        setState(await api(token, { username, course_id: current.id }));
       } catch (error) {
         console.log(error);
       }
     }
 
     temp();
-  }, [token, current.id, api]);
+  }, [token, username, current.id, api]);
 
   // Return nothing if have not selected subject
   if (current.id === "") {

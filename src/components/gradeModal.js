@@ -12,14 +12,17 @@ import styles from "./gradeModal.module.css";
 
 function GradeModal({ lang, setdetail, detail }) {
   const {
-    state: { token },
+    state: { token, username },
   } = useContext(AuthContext);
   const [state, setState] = useState({});
 
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchGradeDetail(token, detail);
+        const q = await fetchGradeDetail(token, {
+          username,
+          course_id: detail,
+        });
         setState(q);
       } catch (error) {
         console.log(error);
@@ -27,7 +30,7 @@ function GradeModal({ lang, setdetail, detail }) {
     }
 
     temp();
-  }, [detail, token]);
+  }, [detail, token, username]);
 
   return (
     <section>

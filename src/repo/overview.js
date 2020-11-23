@@ -1,8 +1,12 @@
 async function fetchOverview(token, subject) {
-  //TODO: call api endpoint to get overview of a subject
-  // this is currently a mock api call that will always succeed
   if (subject === "") return { grades: {}, labs: {} };
 
+  if (process.env === "production") {
+    //TODO: call api endpoint to get overview of a subject
+    return;
+  }
+
+  // Below is the mock api
   if (subject === "100543432") {
     return {
       grades: {

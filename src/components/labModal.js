@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AceEditor from "react-ace";
 
-import { fetchLabDetail } from "../repo/lab";
+import { fetchLabDetail, saveQuestion, submitLab } from "../repo/lab";
 import { AuthContext } from "../contexts/auth";
 
 import "ace-builds/src-noconflict/mode-javascript";
@@ -12,14 +12,14 @@ import styles from "./labModal.module.css";
 
 function LabModal({ lang, setdetail, detail }) {
   const {
-    state: { token },
+    state: { token, username },
   } = useContext(AuthContext);
   const [state, setState] = useState({});
 
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchLabDetail(token, detail);
+        const q = await fetchLabDetail(token, { username, course_id: detail });
         setState(q);
       } catch (error) {
         console.log(error);
@@ -27,7 +27,7 @@ function LabModal({ lang, setdetail, detail }) {
     }
 
     temp();
-  }, [detail, token]);
+  }, [detail, token, username]);
 
   return (
     <section>
@@ -35,10 +35,26 @@ function LabModal({ lang, setdetail, detail }) {
         There are {state.questions ? state.questions.length : ""} questions in
         total
       </h2>
-      {state.type === "Quiz" ? Quiz(state) : <></>}
-      {state.type === "Prog" ? Prog(state, setState, lang) : <></>}
+      {state.type === "Quiz" ? Quiz(token, username, state, setState) : <></>}
+      {state.type === "Prog" ? (
+        Prog(token, username, state, setState, lang)
+      ) : (
+        <></>
+      )}
       <div className={styles.footer}>
-        <button className={styles.submit}>SUBMIT</button>
+        <button
+          className={styles.submit}
+          onClick={(e) => {
+            e.preventDefault();
+            try {
+              submitLab(token, { course_id: detail, username });
+            } catch (error) {
+              console.log(error);
+            }
+          }}
+        >
+          SUBMIT
+        </button>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT
         </button>
@@ -47,10 +63,10 @@ function LabModal({ lang, setdetail, detail }) {
   );
 }
 
-function Quiz(s) {
+function Quiz(token, username, state, setState) {
   return (
     <ul className={styles.questions}>
-      {s.questions.map((q, i) => {
+      {state.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
@@ -62,13 +78,38 @@ function Quiz(s) {
                     <input
                       type="radio"
                       name={i}
-                      value="randomfornow"
+                      value={c}
                       className={styles.radio}
+                      checked={q.studentAnswer === c}
+                      onChange={(e) => {
+                        let newState = { ...state };
+                        newState.questions[i].studentAnswer =
+                          e.currentTarget.value;
+                        setState(newState);
+                      }}
                     />
                   </label>
                 </li>
               ))}
             </ol>
+            <button
+              className={styles.save}
+              onClick={(e) => {
+                e.preventDefault();
+                try {
+                  saveQuestion(token, {
+                    username,
+                    assignment: state.id,
+                    question: i + 1,
+                    answer: state.questions[i].studentAnswer,
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+              }}
+            >
+              Save
+            </button>
           </li>
         );
       })}
@@ -76,7 +117,7 @@ function Quiz(s) {
   );
 }
 
-function Prog(state, setState, lang) {
+function Prog(token, username, state, setState, lang) {
   return (
     <ul className={styles.questions}>
       {state.questions.map((q, i) => {
@@ -96,7 +137,24 @@ function Prog(state, setState, lang) {
               }}
               style={{ width: `100%`, margin: `1rem 0` }}
             />
-            <button className={styles.save}>Save</button>
+            <button
+              className={styles.save}
+              onClick={(e) => {
+                e.preventDefault();
+                try {
+                  saveQuestion(token, {
+                    username,
+                    assignment: state.id,
+                    question: i + 1,
+                    answer: state.questions[i].studentAnswer,
+                  });
+                } catch (error) {
+                  console.log(error);
+                }
+              }}
+            >
+              Save
+            </button>
           </li>
         );
       })}

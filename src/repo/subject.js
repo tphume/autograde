@@ -1,6 +1,10 @@
-async function fetchSubjectList(token) {
-  //TODO: call api endpoint to fetch list of subjects
-  // this is currently a mock api call that will always succeed
+async function fetchSubjectList() {
+  if (process.env.NODE_ENV === "production") {
+    // TODO: call api endpoint to fetch list of subjects
+    return;
+  }
+
+  // Below is the mock api
   return [
     {
       id: "100434324",

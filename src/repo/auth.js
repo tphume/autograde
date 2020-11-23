@@ -3,6 +3,9 @@ async function authenticate(username, password) {
   // this is currently a mock api call that will always succeed
   return {
     token: "faketoken",
+    user: {
+      id: 2,
+    },
   };
 }
 export { authenticate };

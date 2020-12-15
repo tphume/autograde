@@ -12,7 +12,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
       {
         id: "775958198",
         name: "Javascript Lab 2",
-        type: "Programming Assignment",
+        assign_type: "Programming Assignment",
         due_date: "10/20/2020",
         description: `
 # Javascript Programming Assignment
@@ -21,7 +21,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
       {
         id: "0030948389",
         name: "Data types in Javascript 2",
-        type: "Quiz",
+        assign_type: "Quiz",
         due_date: "20/10/2020",
         description: `
 # Javascript Quiz
@@ -34,7 +34,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
     {
       id: "3430958198",
       name: "Python Lab 3",
-      type: "Programming Assignment",
+      assign_type: "Programming Assignment",
       due_date: "20/10/2020",
       description: `
 # Python Programming Assignment
@@ -43,7 +43,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
     {
       id: "7410948389",
       name: "Data types in Python 3",
-      type: "Quiz",
+      assign_type: "Quiz",
       due_date: "20/10/2020",
       description: `
 # Quiz Programming Assignment
@@ -52,7 +52,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
     {
       id: "9430948198",
       name: "Python Lab 4",
-      type: "Programming Assignment",
+      assign_type: "Programming Assignment",
       due_date: "30/10/2020",
       description: `
 # Python Programming Assignment
@@ -61,7 +61,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
     {
       id: "6560948389",
       name: "Data types in Python 4",
-      type: "Quiz",
+      assign_type: "Quiz",
       due_date: "30/10/2020",
       description: `
 # Quiz Programming Assignment
@@ -86,7 +86,7 @@ async function fetchLabDetail(token, { username, course_id }) {
   ) {
     return {
       course_id,
-      type: "Prog",
+      assign_type: "Prog",
       questions: [
         {
           question: "This is just an example question?",
@@ -114,7 +114,7 @@ async function fetchLabDetail(token, { username, course_id }) {
 
   return {
     course_id,
-    type: "Quiz",
+    assign_type: "Quiz",
     questions: [
       {
         question: "This is just an example question?",

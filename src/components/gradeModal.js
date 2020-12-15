@@ -37,8 +37,8 @@ function GradeModal({ lang, setdetail, detail }) {
       <h2 className={styles.title}>
         For this assignment you scored {state.grade}
       </h2>
-      {state.type === "Quiz" ? Quiz(state) : <></>}
-      {state.type === "Prog" ? Prog(state, lang) : <></>}
+      {state.assign_type === "Quiz" ? Quiz(state) : <></>}
+      {state.assign_type === "Prog" ? Prog(state, lang) : <></>}
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT

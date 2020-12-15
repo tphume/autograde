@@ -48,10 +48,12 @@ function CardList({ current, api, detail, setdetail, children }) {
                 <div className={styles.innerBottom}>
                   <h4
                     className={
-                      s.type === "Quiz" ? styles.typeQuiz : styles.typeProg
+                      s.assign_type === "Quiz"
+                        ? styles.typeQuiz
+                        : styles.typeProg
                     }
                   >
-                    {s.type}
+                    {s.assign_type}
                   </h4>
                 </div>
                 <div>

@@ -12,7 +12,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
       {
         id: "875958198",
         name: "Javascript Lab 1",
-        type: "Programming Assignment",
+        assign_type: "Programming Assignment",
         due_date: "17/10/2020",
         description: `
 # Javascript Programming Assignment
@@ -21,7 +21,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
       {
         id: "0430948389",
         name: "Data types in Javascript 1",
-        type: "Quiz",
+        assign_type: "Quiz",
         due_date: "17/10/2020",
         description: `
 # Javascript Quiz
@@ -34,7 +34,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "3430958198",
       name: "Python Lab 2",
-      type: "Programming Assignment",
+      assign_type: "Programming Assignment",
       due_date: "17/10/2020",
       description: `
 # Python Programming Assignment
@@ -43,7 +43,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "7410948389",
       name: "Data types in Python 1",
-      type: "Quiz",
+      assign_type: "Quiz",
       due_date: "17/10/2020",
       description: `
 # Python Quiz
@@ -52,7 +52,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "9430948198",
       name: "Python Lab 1",
-      type: "Programming Assignment",
+      assign_type: "Programming Assignment",
       due_date: "09/10/2020",
       description: `
 # Python Programming Assignment
@@ -61,7 +61,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "6560948389",
       name: "Data types in Python 2",
-      type: "Quiz",
+      assign_type: "Quiz",
       due_date: "09/10/2020",
       description: `
 # Python Quiz
@@ -85,7 +85,7 @@ async function fetchGradeDetail(token, { username, course_id }) {
     course_id === "9430948198"
   ) {
     return {
-      type: "Prog",
+      assign_type: "Prog",
       grade: 4,
       questions: [
         {
@@ -116,7 +116,7 @@ async function fetchGradeDetail(token, { username, course_id }) {
   }
 
   return {
-    type: "Quiz",
+    assign_type: "Quiz",
     grade: 3,
     questions: [
       {

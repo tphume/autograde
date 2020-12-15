@@ -35,8 +35,12 @@ function LabModal({ lang, setdetail, detail }) {
         There are {state.questions ? state.questions.length : ""} questions in
         total
       </h2>
-      {state.type === "Quiz" ? Quiz(token, username, state, setState) : <></>}
-      {state.type === "Prog" ? (
+      {state.assign_type === "Quiz" ? (
+        Quiz(token, username, state, setState)
+      ) : (
+        <></>
+      )}
+      {state.assign_type === "Prog" ? (
         Prog(token, username, state, setState, lang)
       ) : (
         <></>

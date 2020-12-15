@@ -90,23 +90,35 @@ async function fetchLabDetail(token, { username, course_id }) {
       questions: [
         {
           question: "This is just an example question?",
-          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: "",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: "",
+        },
+      ],
+      studentAnswer: [
+        {
+          title: "",
+        },
+        {
+          title: "",
+        },
+        {
+          title: "",
+        },
+        {
+          title: "",
+        },
+        {
+          title: "",
         },
       ],
     };
@@ -118,28 +130,40 @@ async function fetchLabDetail(token, { username, course_id }) {
     questions: [
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "",
+        choices: ["someanswer1", "someanswer2", "someanswer3", "someanswer4"],
       },
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "",
+        choices: ["someanswer1", "someanswer2", "someanswer3", "someanswer4"],
       },
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "",
+        choices: ["someanswer1", "someanswer2", "someanswer3", "someanswer4"],
       },
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "",
+        choices: ["someanswer1", "someanswer2", "someanswer3", "someanswer4"],
       },
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "",
+        choices: ["someanswer1", "someanswer2", "someanswer3", "someanswer4"],
+      },
+    ],
+    studentAnswer: [
+      {
+        title: "",
+      },
+      {
+        title: "",
+      },
+      {
+        title: "",
+      },
+      {
+        title: "",
+      },
+      {
+        title: "",
       },
     ],
   };

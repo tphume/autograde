@@ -84,11 +84,10 @@ function Quiz(token, username, state, setState) {
                       name={i}
                       value={c}
                       className={styles.radio}
-                      checked={q.studentAnswer === c}
+                      checked={state.studentAnswer[i].title === c}
                       onChange={(e) => {
                         let newState = { ...state };
-                        newState.questions[i].studentAnswer =
-                          e.currentTarget.value;
+                        newState.studentAnswer[i].title = e.currentTarget.value;
                         setState(newState);
                       }}
                     />
@@ -105,7 +104,7 @@ function Quiz(token, username, state, setState) {
                     username,
                     assignment: state.id,
                     question: i + 1,
-                    answer: state.questions[i].studentAnswer,
+                    answer: state.studentAnswer[i].title,
                   });
                 } catch (error) {
                   console.log(error);
@@ -132,11 +131,11 @@ function Prog(token, username, state, setState, lang) {
               name={i.toString()}
               mode={lang}
               theme="monokai"
-              value={q.studentAnswer}
+              value={state.studentAnswer[i].title}
               fontSize={14}
               onChange={(v) => {
                 let newState = { ...state };
-                newState.questions[i].studentAnswer = v;
+                newState.studentAnswer[i].title = v;
                 setState(newState);
               }}
               style={{ width: `100%`, margin: `1rem 0` }}
@@ -150,7 +149,7 @@ function Prog(token, username, state, setState, lang) {
                     username,
                     assignment: state.id,
                     question: i + 1,
-                    answer: state.questions[i].studentAnswer,
+                    answer: state.studentAnswer[i].title,
                   });
                 } catch (error) {
                   console.log(error);

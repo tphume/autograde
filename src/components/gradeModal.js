@@ -21,7 +21,8 @@ function GradeModal({ lang, setdetail, detail }) {
       try {
         const q = await fetchGradeDetail(token, {
           username,
-          course_id: detail,
+          course_id: detail.course_id,
+          id: detail.id,
         });
         setState(q);
       } catch (error) {

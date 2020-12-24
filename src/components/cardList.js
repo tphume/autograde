@@ -59,7 +59,9 @@ function CardList({ current, api, detail, setdetail, children }) {
                 <div>
                   <button
                     className={styles.view}
-                    onClick={() => setdetail(s.id)}
+                    onClick={() =>
+                      setdetail({ id: s.id, course_id: current.id })
+                    }
                   >
                     VIEW
                   </button>

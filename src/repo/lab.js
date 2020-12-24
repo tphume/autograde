@@ -80,12 +80,20 @@ async function fetchStudentLabList(token, { username, course_id }) {
   ];
 }
 
-async function fetchLabDetail(token, { username, course_id }) {
+async function fetchLabDetail(token, { username, course_id, id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    //TODO: call api endpoint to fetch a student grade individual detail
-    return;
+    const endpoint = process.env.REACT_APP_URL + `/assignments/${id}`;
+
+    try {
+      const response = await axios.get(endpoint, {
+        data: { course_id, username },
+      });
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
   }
 
   // Below is the mock api

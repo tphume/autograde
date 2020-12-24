@@ -62,7 +62,7 @@ function Login({ dispatch }) {
           Signup
         </button>
       </p>
-      {showReg && <RegisterModal setShowReg={setShowReg} />}
+      {showReg && <RegisterModal setShowReg={setShowReg} dispatch={dispatch} />}
     </section>
   );
 }

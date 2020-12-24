@@ -6,11 +6,24 @@ import Modal from "./modal";
 import styles from "./registerModal.module.css";
 import loginStyles from "./login.module.css";
 
-function RegisterModal({ setShowReg }) {
+function RegisterModal({ setShowReg, dispatch }) {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const { token, user } = await register(name, username, email, password);
+      dispatch({ type: "LOGIN", payload: { username, token, id: user.id } });
+      setShowReg(false);
+    } catch (error) {
+      // TODO: add error displaying logic
+      console.log(error);
+    }
+  }
 
   return (
     <Modal>
@@ -19,7 +32,7 @@ function RegisterModal({ setShowReg }) {
         <h4 className={loginStyles.subTitle}>
           Fill in all the filed to continue
         </h4>
-        <form className={loginStyles.formContainer}>
+        <form className={loginStyles.formContainer} onSubmit={onSubmit}>
           <div className={loginStyles.inputContainer}>
             <label className={loginStyles.inputLabel}>Name</label>
             <input

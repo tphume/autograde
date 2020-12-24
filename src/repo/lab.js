@@ -185,8 +185,19 @@ async function fetchLabDetail(token, { username, course_id, id }) {
 
 async function saveQuestion(token, { username, assignment, question, answer }) {
   if (process.env.NODE_ENV === "production") {
-    //TODO: call api endpoint to save student's question
-    return;
+    const endpoint = process.env.REACT_APP_URL + "/answer";
+
+    try {
+      const response = axios.post(endpoint, {
+        username,
+        assignment,
+        question,
+        answer,
+      });
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
   }
 }
 

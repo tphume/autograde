@@ -4,12 +4,10 @@ async function fetchStudentLabList(token, { username, course_id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/assignments/";
+    const endpoint = `${process.env.REACT_APP_URL}/courses/${course_id}/assignments/`;
 
     try {
-      const response = await axios.get(endpoint, {
-        data: { course_id, username },
-      });
+      const response = await axios.get(endpoint);
       return response.data;
     } catch (e) {
       throw e;
@@ -80,17 +78,43 @@ async function fetchStudentLabList(token, { username, course_id }) {
   ];
 }
 
-async function fetchLabDetail(token, { username, course_id, id }) {
+async function fetchLabDetail(userId, { username, course_id, id }) {
   if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + `/assignments/${id}/`;
+    const endpoint = `${process.env.REACT_APP_URL}/courses/${course_id}/assignments/${id}/`;
 
     try {
-      const response = await axios.get(endpoint, {
-        data: { course_id, username },
+      const response = await axios.get(endpoint);
+
+      // parses response here into better format
+      // for answer
+      const studentAnswer = response.data[0].questions.map((q) => {
+        const answer = q.studentanswer.find((a) => a.id === id);
+        return answer !== undefined ? answer : { title: "" };
       });
-      return response.data;
+
+      // for question
+      var newQuestions = {};
+
+      if (response.data[0].assign_type === "Prog") {
+        newQuestions = response.data[0].questions.map((q) => {
+          return { question: q.question };
+        });
+      } else {
+        newQuestions = response.data[0].questions.map((q) => {
+          return { question: q.question, choices: q.choices };
+        });
+      }
+
+      // return new format
+      const res = {
+        id,
+        assign_type: response.data[0].assign_type,
+        questions: newQuestions,
+        studentAnswer: studentAnswer,
+      };
+      return res;
     } catch (e) {
       throw e;
     }

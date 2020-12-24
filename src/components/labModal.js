@@ -12,14 +12,14 @@ import styles from "./labModal.module.css";
 
 function LabModal({ lang, setdetail, detail }) {
   const {
-    state: { token, username },
+    state: { token, username, id: userId },
   } = useContext(AuthContext);
   const [state, setState] = useState({});
 
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchLabDetail(token, {
+        const q = await fetchLabDetail(userId, {
           username,
           course_id: detail.course_id,
           id: detail.id,
@@ -31,7 +31,7 @@ function LabModal({ lang, setdetail, detail }) {
     }
 
     temp();
-  }, [detail, token, username]);
+  }, [detail, token, username, userId]);
 
   return (
     <section>

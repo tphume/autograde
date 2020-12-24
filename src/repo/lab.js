@@ -81,7 +81,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
 }
 
 async function fetchLabDetail(token, { username, course_id, id }) {
-  if (course_id === "") return [];
+  if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
     const endpoint = process.env.REACT_APP_URL + `/assignments/${id}`;
@@ -97,13 +97,9 @@ async function fetchLabDetail(token, { username, course_id, id }) {
   }
 
   // Below is the mock api
-  if (
-    course_id === "775958198" ||
-    course_id === "3430958198" ||
-    course_id === "9430948198"
-  ) {
+  if (id === "775958198" || id === "3430958198" || id === "9430948198") {
     return {
-      course_id,
+      id,
       assign_type: "Prog",
       questions: [
         {
@@ -143,7 +139,7 @@ async function fetchLabDetail(token, { username, course_id, id }) {
   }
 
   return {
-    course_id,
+    id,
     assign_type: "Quiz",
     questions: [
       {

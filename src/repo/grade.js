@@ -78,8 +78,8 @@ async function fetchStudentGradeList(token, { username, course_id }) {
   ];
 }
 
-async function fetchGradeDetail(token, { username, course_id }) {
-  if (course_id === "") return [];
+async function fetchGradeDetail(token, { username, course_id, id }) {
+  if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
     //TODO: call api endpoint to fetch a student grade individual detail
@@ -87,11 +87,7 @@ async function fetchGradeDetail(token, { username, course_id }) {
   }
 
   // Below is the mock api
-  if (
-    course_id === "875958198" ||
-    course_id === "3430958198" ||
-    course_id === "9430948198"
-  ) {
+  if (id === "875958198" || id === "3430958198" || id === "9430948198") {
     return {
       assign_type: "Prog",
       grade: 4,

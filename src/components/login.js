@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 
 import { authenticate } from "../repo/auth";
+import RegisterModal from "./registerModal";
 
 import styles from "./login.module.css";
 
 function Login({ dispatch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showReg, setShowReg] = useState(false);
 
   async function submitForm(e) {
     e.preventDefault();
@@ -53,8 +55,14 @@ function Login({ dispatch }) {
       </form>
       <p className={styles.signup}>
         Don't have an account?{" "}
-        <button className={styles.signupButton}>Signup</button>
+        <button
+          className={styles.signupButton}
+          onClick={() => setShowReg(true)}
+        >
+          Signup
+        </button>
       </p>
+      {showReg && <RegisterModal setShowReg={setShowReg} />}
     </section>
   );
 }

@@ -20,6 +20,7 @@ function Wrapper({ children, current, setCurrent }) {
 
     temp();
 
+    // on logout
     return () => setCurrent({ id: "", name: "" });
   }, [setCurrent]);
 

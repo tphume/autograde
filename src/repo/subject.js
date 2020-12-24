@@ -1,7 +1,15 @@
+import axios from "axios";
+
 async function fetchSubjectList() {
   if (process.env.NODE_ENV === "production") {
-    // TODO: call api endpoint to fetch list of subjects
-    return;
+    const endpoint = process.env.REACT_APP_URL + "/courses";
+
+    try {
+      const response = await axios.get(endpoint);
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
   }
 
   // Below is the mock api

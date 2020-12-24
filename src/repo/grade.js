@@ -1,9 +1,17 @@
+import axios from "axios";
+
 async function fetchStudentGradeList(token, { username, course_id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    //TODO: call api endpoint to fetch a student grade list by subject
-    return;
+    const endpoint = process.env.REACT_APP_URL + "/gradedassignments";
+
+    try {
+      const response = await axios.get(endpoint, { username, course_id });
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
   }
 
   // Below is the mock api

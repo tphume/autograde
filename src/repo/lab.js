@@ -4,7 +4,7 @@ async function fetchStudentLabList(token, { username, course_id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/assignments";
+    const endpoint = process.env.REACT_APP_URL + "/assignments/";
 
     try {
       const response = await axios.get(endpoint, {
@@ -84,7 +84,7 @@ async function fetchLabDetail(token, { username, course_id, id }) {
   if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + `/assignments/${id}`;
+    const endpoint = process.env.REACT_APP_URL + `/assignments/${id}/`;
 
     try {
       const response = await axios.get(endpoint, {

@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function authenticate(username, password) {
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/api/auth/login";
+    const endpoint = process.env.REACT_APP_URL + "/api/auth/login/";
 
     try {
       const response = await axios.post(endpoint, { username, password });

@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function fetchSubjectList() {
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/courses";
+    const endpoint = process.env.REACT_APP_URL + "/courses/";
 
     try {
       const response = await axios.get(endpoint);

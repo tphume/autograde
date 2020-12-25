@@ -8,7 +8,17 @@ async function fetchStudentGradeList(userId, { username, course_id }) {
 
     try {
       const response = await axios.get(endpoint);
-      return response.data;
+      const res = response.map((l) => {
+        return {
+          id: l.assignment.id, // use assignment id instead
+          name: l.assignment.name,
+          grade: l.grade,
+          assign_type: l.assignment.assign_type,
+          due_date: l.assignment.due_date,
+          description: l.assignment.description,
+        };
+      });
+      return res;
     } catch (e) {
       throw e;
     }
@@ -84,17 +94,17 @@ async function fetchStudentGradeList(userId, { username, course_id }) {
   ];
 }
 
-async function fetchGradeDetail(token, { username, course_id, id }) {
+async function fetchGradeDetail(userId, { username, course_id, id }) {
   if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    //TODO: call api endpoint to fetch a student grade individual detail
-    return;
+    return; // do nothing yet
   }
 
   // Below is the mock api
   if (id === "875958198" || id === "3430958198" || id === "9430948198") {
     return {
+      name: "Hello",
       assign_type: "Prog",
       grade: 4,
       questions: [
@@ -126,6 +136,7 @@ async function fetchGradeDetail(token, { username, course_id, id }) {
   }
 
   return {
+    name: "Hello",
     assign_type: "Quiz",
     grade: 3,
     questions: [

@@ -41,9 +41,7 @@ function GradeModal({ lang, setdetail, detail }) {
 
   return (
     <section>
-      <h2 className={styles.title}>
-        For this assignment you scored {state.grade}
-      </h2>
+      <h2 className={styles.title}>{state.name}</h2>
       {state.assign_type === "Quiz" ? Quiz(state) : <></>}
       {state.assign_type === "Prog" ? Prog(state, lang) : <></>}
       <div className={styles.footer}>

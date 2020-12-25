@@ -14,8 +14,9 @@ function SubjectList({ subjects, current, setCurrent }) {
           return (
             <li
               key={s.id}
-              className={`${styles.card} ${current.id === s.id ? styles.current : ""
-                }`}
+              className={`${styles.card} ${
+                current.id === s.id ? styles.current : ""
+              }`}
               onClick={() => setCurrent(s)}
             >
               <h3 className={styles.name}>{s.name}</h3>

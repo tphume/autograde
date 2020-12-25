@@ -9,7 +9,7 @@ import styles from "./cardList.module.css";
 
 function CardList({ current, api, detail, setdetail, children }) {
   const {
-    state: { token, username },
+    state: { id: userId, username },
   } = useContext(AuthContext);
 
   const { setLoading } = useContext(LoadingContext);
@@ -20,7 +20,7 @@ function CardList({ current, api, detail, setdetail, children }) {
   useEffect(() => {
     async function temp() {
       try {
-        setState(await api(token, { username, course_id: current.id }));
+        setState(await api(userId, { username, course_id: current.id }));
       } catch (error) {
         console.log(error);
       }
@@ -29,7 +29,7 @@ function CardList({ current, api, detail, setdetail, children }) {
     setLoading(true);
     temp();
     setLoading(false);
-  }, [token, username, current.id, api, setLoading]);
+  }, [userId, username, current.id, api, setLoading]);
 
   // Return nothing if have not selected subject
   if (current.id === "") {
@@ -47,7 +47,7 @@ function CardList({ current, api, detail, setdetail, children }) {
                   <h3 className={styles.name}>{s.name}</h3>
                   <h6 className={styles.id}>{`ID: ${s.id}`}</h6>
                 </div>
-                <h5 className={styles.date}>{s.due_date}</h5>
+                <h5 className={styles.date}>{s.due_date.slice(0, 10)}</h5>
               </div>
               <div className={styles.cardBottom}>
                 <div className={styles.innerBottom}>

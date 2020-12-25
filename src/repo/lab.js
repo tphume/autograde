@@ -225,10 +225,16 @@ async function saveQuestion(token, { username, assignment, question, answer }) {
   }
 }
 
-async function submitLab(token, { course_id, username }) {
+async function submitLab(token, { id, username }) {
   if (process.env.NODE_ENV === "production") {
-    //TODO: call api endpoint to submit entire lab
-    return;
+    const endpoint = process.env.REACT_APP_URL + "/submit/assignment/";
+
+    try {
+      const response = await axios.post(endpoint, { username, assignment: id });
+      return response.data;
+    } catch (e) {
+      throw e;
+    }
   }
 }
 

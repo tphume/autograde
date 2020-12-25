@@ -81,12 +81,14 @@ function LabModal({ lang, setdetail, detail }) {
             setLoading(true);
 
             try {
-              submitLab(token, { course_id: detail, username });
+              submitLab(token, { id: state.id, username });
             } catch (error) {
+              openError("An error occurred", 3000);
               console.log(error);
             }
 
             setLoading(false);
+            openSuccess("Assignment submitted", 3000);
           }}
         >
           SUBMIT

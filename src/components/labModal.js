@@ -66,13 +66,13 @@ function LabModal({ lang, setdetail, detail }) {
       {state.assign_type === "Quiz" ? (
         Quiz(token, username, state, setState, { openSuccess, openError })
       ) : (
-          <></>
-        )}
+        <></>
+      )}
       {state.assign_type === "Prog" ? (
         Prog(token, username, state, setState, lang, { openSuccess, openError })
       ) : (
-          <></>
-        )}
+        <></>
+      )}
       <div className={styles.footer}>
         <button
           className={styles.submit}
@@ -81,7 +81,10 @@ function LabModal({ lang, setdetail, detail }) {
             setLoading(true);
 
             try {
-              const { message } = await submitLab(token, { id: state.id, username });
+              const { message } = await submitLab(token, {
+                id: state.id,
+                username,
+              });
               if (message === "previously submitted") {
                 openError("Assignment already submitted", 3000);
               } else {

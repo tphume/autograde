@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import LoadingOverlay from "react-loading-overlay";
 
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 import Slider from "../components/slider";
 import Login from "../components/login";
 import SideBar from "../components/sidebar";
@@ -22,12 +24,16 @@ function App() {
   const [current, setCurrent] = useState({ id: "", name: "" });
 
   const auth = useContext(AuthContext);
+  const load = useContext(LoadingContext);
+
   if (!auth.state.isAuth) {
     return (
-      <main className={styles.landingContainer}>
-        <Slider slides={landingImages} />
-        <Login dispatch={auth.dispatch}></Login>
-      </main>
+      <LoadingOverlay active={load.loading} spinner text="Authenticating...">
+        <main className={styles.landingContainer}>
+          <Slider slides={landingImages} />
+          <Login dispatch={auth.dispatch}></Login>
+        </main>
+      </LoadingOverlay>
     );
   }
 

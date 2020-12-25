@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
+import { LoadingContext } from "../contexts/loading";
 import { authenticate } from "../repo/auth";
 import RegisterModal from "./registerModal";
 
 import styles from "./login.module.css";
 
 function Login({ dispatch }) {
+  const load = useContext(LoadingContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showReg, setShowReg] = useState(false);
 
   async function submitForm(e) {
     e.preventDefault();
+    load.setLoading(true);
 
     try {
       const { token, user } = await authenticate(username, password);
@@ -20,6 +24,8 @@ function Login({ dispatch }) {
       // TODO: add error displaying logic
       console.log(error);
     }
+
+    load.setLoading(false);
   }
 
   return (

@@ -67,10 +67,10 @@ function Quiz(s) {
             </ol>
             <h3
               className={
-                q.studentAnswer === q.answer ? styles.correct : styles.wrong
+                q.studentanswer === q.answer ? styles.correct : styles.wrong
               }
             >
-              STUDENT ANSWER [{q.studentAnswer}]
+              STUDENT ANSWER [{q.studentanswer}]
             </h3>
           </li>
         );
@@ -90,7 +90,7 @@ function Prog(s, lang) {
               name={i.toString()}
               mode={lang}
               theme="monokai"
-              value={q.studentAnswer}
+              value={q.studentanswer}
               fontSize={14}
               style={{ width: `100%`, margin: `1rem 0` }}
               readOnly

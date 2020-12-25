@@ -98,7 +98,25 @@ async function fetchGradeDetail(userId, { username, course_id, id }) {
   if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    return; // do nothing yet
+    const endpoint = `${process.env.REACT_APP_URL}/user/${userId}/courses/${course_id}/gradedassignments/${id}`;
+
+    try {
+      const response = await axios.get(endpoint);
+      const res = response.data.map((d) => {
+        // get correct student answer first
+        const studentanswer = d.questions.studentanswer.find(
+          (a) => a.student === userId
+        );
+        return {
+          ...d,
+          studentanswer: studentanswer !== undefined ? studentanswer.title : "",
+        };
+      });
+
+      return res;
+    } catch (e) {
+      throw e;
+    }
   }
 
   // Below is the mock api
@@ -106,30 +124,27 @@ async function fetchGradeDetail(userId, { username, course_id, id }) {
     return {
       name: "Hello",
       assign_type: "Prog",
-      grade: 4,
+      due_date: "somethingdewdewd",
       questions: [
         {
           question: "This is just an example question?",
-          studentAnswer: `print("Hello World!")`,
+          studentanswer: `print("Hello World!")`,
+          answer: "Hello World!",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: `print("Hello World!")`,
+          studentanswer: `print("Hello World!")`,
+          answer: "Hello World!",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: `notprint("Hello World!")`,
-          fail: true,
-          expect: "Hello World!",
-          got: "Syntax Error",
+          studentanswer: `print("Hello World!")`,
+          answer: "Hello World!",
         },
         {
           question: "This is just an example question?",
-          studentAnswer: `print("Hello World!")`,
-        },
-        {
-          question: "This is just an example question?",
-          studentAnswer: `print("Hello World!")`,
+          studentanswer: `print("Hello World!")`,
+          answer: "Hello World!",
         },
       ],
     };
@@ -138,36 +153,36 @@ async function fetchGradeDetail(userId, { username, course_id, id }) {
   return {
     name: "Hello",
     assign_type: "Quiz",
-    grade: 3,
+    due_date: "somethingdewdewd",
     questions: [
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "someanswer",
+        studentanswer: "someanswer",
         answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "B",
+        studentanswer: "B",
         answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "someanswer",
+        studentanswer: "someanswer",
         answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "D",
+        studentanswer: "D",
         answer: "someanswer",
       },
       {
         question: "This is just an example question?",
         choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentAnswer: "someanswer",
+        studentanswer: "someanswer",
         answer: "someanswer",
       },
     ],

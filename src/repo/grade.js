@@ -1,13 +1,13 @@
 import axios from "axios";
 
-async function fetchStudentGradeList(token, { username, course_id }) {
+async function fetchStudentGradeList(userId, { username, course_id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/gradedassignments/";
+    const endpoint = `${process.env.REACT_APP_URL}/${userId}/courses/${course_id}/gradedassignments/`;
 
     try {
-      const response = await axios.get(endpoint, { username, course_id });
+      const response = await axios.get(endpoint);
       return response.data;
     } catch (e) {
       throw e;
@@ -20,6 +20,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
       {
         id: "875958198",
         name: "Javascript Lab 1",
+        grade: 100,
         assign_type: "Programming Assignment",
         due_date: "17/10/2020",
         description: `
@@ -29,6 +30,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
       {
         id: "0430948389",
         name: "Data types in Javascript 1",
+        grade: 100,
         assign_type: "Quiz",
         due_date: "17/10/2020",
         description: `
@@ -42,6 +44,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "3430958198",
       name: "Python Lab 2",
+      grade: 100,
       assign_type: "Programming Assignment",
       due_date: "17/10/2020",
       description: `
@@ -51,6 +54,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "7410948389",
       name: "Data types in Python 1",
+      grade: 100,
       assign_type: "Quiz",
       due_date: "17/10/2020",
       description: `
@@ -60,6 +64,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "9430948198",
       name: "Python Lab 1",
+      grade: 100,
       assign_type: "Programming Assignment",
       due_date: "09/10/2020",
       description: `
@@ -69,6 +74,7 @@ async function fetchStudentGradeList(token, { username, course_id }) {
     {
       id: "6560948389",
       name: "Data types in Python 2",
+      grade: 100,
       assign_type: "Quiz",
       due_date: "09/10/2020",
       description: `

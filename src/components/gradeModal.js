@@ -13,7 +13,7 @@ import styles from "./gradeModal.module.css";
 
 function GradeModal({ lang, setdetail, detail }) {
   const {
-    state: { token, username },
+    state: { username, id: userId },
   } = useContext(AuthContext);
 
   const { setLoading } = useContext(LoadingContext);
@@ -23,7 +23,7 @@ function GradeModal({ lang, setdetail, detail }) {
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchGradeDetail(token, {
+        const q = await fetchGradeDetail(userId, {
           username,
           course_id: detail.course_id,
           id: detail.id,
@@ -37,7 +37,7 @@ function GradeModal({ lang, setdetail, detail }) {
     setLoading(true);
     temp();
     setLoading(false);
-  }, [detail, token, username, setLoading]);
+  }, [detail, userId, username, setLoading]);
 
   return (
     <section>

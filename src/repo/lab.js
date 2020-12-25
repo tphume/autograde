@@ -90,7 +90,7 @@ async function fetchLabDetail(userId, { username, course_id, id }) {
       // parses response here into better format
       // for answer
       const studentAnswer = response.data[0].questions.map((q) => {
-        const answer = q.studentanswer.find((a) => a.id === userId);
+        const answer = q.studentanswer.find((a) => a.student === userId);
         return answer !== undefined ? answer : { title: "" };
       });
 
@@ -209,7 +209,7 @@ async function fetchLabDetail(userId, { username, course_id, id }) {
 
 async function saveQuestion(token, { username, assignment, question, answer }) {
   if (process.env.NODE_ENV === "production") {
-    const endpoint = process.env.REACT_APP_URL + "/answer";
+    const endpoint = process.env.REACT_APP_URL + "/answer/";
 
     try {
       const response = axios.post(endpoint, {

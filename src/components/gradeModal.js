@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 
 import { fetchGradeDetail } from "../repo/grade";
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
@@ -12,16 +13,20 @@ import styles from "./gradeModal.module.css";
 
 function GradeModal({ lang, setdetail, detail }) {
   const {
-    state: { token, username },
+    state: { username, id: userId },
   } = useContext(AuthContext);
+
+  const { setLoading } = useContext(LoadingContext);
+
   const [state, setState] = useState({});
 
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchGradeDetail(token, {
+        const q = await fetchGradeDetail(userId, {
           username,
-          course_id: detail,
+          course_id: detail.course_id,
+          id: detail.id,
         });
         setState(q);
       } catch (error) {
@@ -29,16 +34,16 @@ function GradeModal({ lang, setdetail, detail }) {
       }
     }
 
+    setLoading(true);
     temp();
-  }, [detail, token, username]);
+    setLoading(false);
+  }, [detail, userId, username, setLoading]);
 
   return (
     <section>
-      <h2 className={styles.title}>
-        For this assignment you scored {state.grade}
-      </h2>
-      {state.type === "Quiz" ? Quiz(state) : <></>}
-      {state.type === "Prog" ? Prog(state, lang) : <></>}
+      <h2 className={styles.title}>{state.name}</h2>
+      {state.assign_type === "Quiz" ? Quiz(state) : <></>}
+      {state.assign_type === "Prog" ? Prog(state, lang) : <></>}
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setdetail("")}>
           EXIT
@@ -54,18 +59,34 @@ function Quiz(s) {
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>{q.question}</h2>
+            <h2>{`[${i + 1}] ${q.question}`}</h2>
             <ol className={styles.choices}>
-              {q.choices.map((c, i) => (
-                <li key={i}>{c}</li>
-              ))}
+              {q.choices.map((c, i) => {
+                if (c === q.answer) {
+                  // for correct choice
+                  return (
+                    <li key={i} style={{ color: "#4caf50" }}>
+                      {c}
+                    </li>
+                  );
+                } else if (c === q.studentanswer) {
+                  // if user answer incorrectly
+                  return (
+                    <li key={i} style={{ color: "#c53a2a" }}>
+                      {c}
+                    </li>
+                  );
+                }
+
+                return <li key={i}>{c}</li>;
+              })}
             </ol>
             <h3
               className={
-                q.studentAnswer === q.answer ? styles.correct : styles.wrong
+                q.studentanswer === q.answer ? styles.correct : styles.wrong
               }
             >
-              STUDENT ANSWER [{q.studentAnswer}]
+              STUDENT ANSWER [{q.studentanswer}]
             </h3>
           </li>
         );
@@ -80,16 +101,20 @@ function Prog(s, lang) {
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>{q.question}</h2>
+            <h2>{`[${i + 1}] ${q.question}`}</h2>
             <AceEditor
               name={i.toString()}
               mode={lang}
               theme="monokai"
-              value={q.studentAnswer}
+              value={q.studentanswer}
               fontSize={14}
-              style={{ width: `100%`, margin: `1rem 0` }}
+              style={{ width: `50%`, margin: `1rem 0` }}
               readOnly
             />
+            <h3>Expected Output</h3>
+            <textarea style={{ width: `100%` }} readOnly>
+              {q.answer}
+            </textarea>
           </li>
         );
       })}

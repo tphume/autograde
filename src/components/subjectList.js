@@ -20,7 +20,7 @@ function SubjectList({ subjects, current, setCurrent }) {
               onClick={() => setCurrent(s)}
             >
               <h3 className={styles.name}>{s.name}</h3>
-              <h6 className={styles.id}>{s.id}</h6>
+              <h6 className={styles.id}>{`ID: ${s.id}`}</h6>
               <div className={styles.bottom}>
                 <h4 className={styles.prof}>{s.prof}</h4>
                 <button className={styles.info} onClick={() => setInfo(s)}>

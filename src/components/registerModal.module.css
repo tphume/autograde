@@ -1,0 +1,20 @@
+.root {
+  width: 360px;
+  margin: 140px auto;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+}
+
+.exit {
+  font-family: "Product Sans";
+  font-size: 1rem;
+  background-color: #c53a2a;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 0px 5px 10px;
+  text-align: left;
+  margin-top: 10px;
+  cursor: pointer;
+}

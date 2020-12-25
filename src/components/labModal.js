@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import AceEditor from "react-ace";
+import { useSnackbar } from "react-simple-snackbar";
 
 import { fetchLabDetail, saveQuestion, submitLab } from "../repo/lab";
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
@@ -10,24 +12,50 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 import styles from "./labModal.module.css";
 
+// styles for snackbar
+const optionsSuccess = {
+  style: {
+    backgroundColor: "#4caf50",
+  },
+};
+
+const optionsError = {
+  style: {
+    backgroundColor: "#c53a2a",
+  },
+};
+
+// main component
 function LabModal({ lang, setdetail, detail }) {
   const {
-    state: { token, username },
+    state: { token, username, id: userId },
   } = useContext(AuthContext);
+
+  const { setLoading } = useContext(LoadingContext);
+
   const [state, setState] = useState({});
+
+  const [openSuccess] = useSnackbar(optionsSuccess);
+  const [openError] = useSnackbar(optionsError);
 
   useEffect(() => {
     async function temp() {
       try {
-        const q = await fetchLabDetail(token, { username, course_id: detail });
+        const q = await fetchLabDetail(userId, {
+          username,
+          course_id: detail.course_id,
+          id: detail.id,
+        });
         setState(q);
       } catch (error) {
         console.log(error);
       }
     }
 
+    setLoading(true);
     temp();
-  }, [detail, token, username]);
+    setLoading(false);
+  }, [detail, token, username, userId, setLoading]);
 
   return (
     <section>
@@ -35,22 +63,39 @@ function LabModal({ lang, setdetail, detail }) {
         There are {state.questions ? state.questions.length : ""} questions in
         total
       </h2>
-      {state.type === "Quiz" ? Quiz(token, username, state, setState) : <></>}
-      {state.type === "Prog" ? (
-        Prog(token, username, state, setState, lang)
+      {state.assign_type === "Quiz" ? (
+        Quiz(token, username, state, setState, { openSuccess, openError })
+      ) : (
+        <></>
+      )}
+      {state.assign_type === "Prog" ? (
+        Prog(token, username, state, setState, lang, { openSuccess, openError })
       ) : (
         <></>
       )}
       <div className={styles.footer}>
         <button
           className={styles.submit}
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
+            setLoading(true);
+
             try {
-              submitLab(token, { course_id: detail, username });
+              const { message } = await submitLab(token, {
+                id: state.id,
+                username,
+              });
+              if (message === "previously submitted") {
+                openError("Assignment already submitted", 3000);
+              } else {
+                openSuccess("Assignment submitted", 3000);
+              }
             } catch (error) {
+              openError("An error occurred", 3000);
               console.log(error);
             }
+
+            setLoading(false);
           }}
         >
           SUBMIT
@@ -63,7 +108,7 @@ function LabModal({ lang, setdetail, detail }) {
   );
 }
 
-function Quiz(token, username, state, setState) {
+function Quiz(token, username, state, setState, { openSuccess, openError }) {
   return (
     <ul className={styles.questions}>
       {state.questions.map((q, i) => {
@@ -80,11 +125,10 @@ function Quiz(token, username, state, setState) {
                       name={i}
                       value={c}
                       className={styles.radio}
-                      checked={q.studentAnswer === c}
+                      checked={state.studentAnswer[i].title === c}
                       onChange={(e) => {
                         let newState = { ...state };
-                        newState.questions[i].studentAnswer =
-                          e.currentTarget.value;
+                        newState.studentAnswer[i].title = e.currentTarget.value;
                         setState(newState);
                       }}
                     />
@@ -101,10 +145,12 @@ function Quiz(token, username, state, setState) {
                     username,
                     assignment: state.id,
                     question: i + 1,
-                    answer: state.questions[i].studentAnswer,
+                    answer: state.studentAnswer[i].title,
                   });
+                  openSuccess("Answer saved", 3000);
                 } catch (error) {
                   console.log(error);
+                  openError("Error saving", 3000);
                 }
               }}
             >
@@ -117,7 +163,14 @@ function Quiz(token, username, state, setState) {
   );
 }
 
-function Prog(token, username, state, setState, lang) {
+function Prog(
+  token,
+  username,
+  state,
+  setState,
+  lang,
+  { openSuccess, openError }
+) {
   return (
     <ul className={styles.questions}>
       {state.questions.map((q, i) => {
@@ -128,11 +181,11 @@ function Prog(token, username, state, setState, lang) {
               name={i.toString()}
               mode={lang}
               theme="monokai"
-              value={q.studentAnswer}
+              value={state.studentAnswer[i].title}
               fontSize={14}
               onChange={(v) => {
                 let newState = { ...state };
-                newState.questions[i].studentAnswer = v;
+                newState.studentAnswer[i].title = v;
                 setState(newState);
               }}
               style={{ width: `100%`, margin: `1rem 0` }}
@@ -146,10 +199,12 @@ function Prog(token, username, state, setState, lang) {
                     username,
                     assignment: state.id,
                     question: i + 1,
-                    answer: state.questions[i].studentAnswer,
+                    answer: state.studentAnswer[i].title,
                   });
+                  openSuccess("Answer saved", 3000);
                 } catch (error) {
                   console.log(error);
+                  openError("Error saving", 3000);
                 }
               }}
             >

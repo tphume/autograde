@@ -1,48 +1,28 @@
-async function fetchOverview(token, subject) {
-  if (subject === "") return { grades: {}, labs: {} };
+import axios from "axios";
 
-  if (process.env === "production") {
-    //TODO: call api endpoint to get overview of a subject
-    return;
-  }
+async function fetchOverview(userId, course_id) {
+  if (process.env.NODE_ENV === "production") {
+    const endpoint = `${process.env.REACT_APP_URL}/gradeoverview/user/${userId}/courses/${course_id}/`;
 
-  // Below is the mock api
-  if (subject === "100543432") {
-    return {
-      grades: {
-        total: 2,
-        pass: 2,
-        fail: 0,
-        quiz: 1,
-        prog: 1,
-      },
-      labs: {
-        total: 2,
-        pending: 1,
-        grading: 1,
-        late: 0,
-        quiz: 1,
-        prog: 1,
-      },
-    };
+    try {
+      const response = await axios.get(endpoint);
+
+      return {
+        course_avg:
+          response.data.course_avg !== null ? response.data.course_avg : 0,
+        student_avg:
+          response.data.student_average !== null
+            ? response.data.student_average
+            : 0,
+      };
+    } catch (e) {
+      throw e;
+    }
   }
 
   return {
-    grades: {
-      total: 4,
-      pass: 3,
-      fail: 1,
-      quiz: 2,
-      prog: 2,
-    },
-    labs: {
-      total: 4,
-      pending: 2,
-      grading: 1,
-      late: 1,
-      quiz: 2,
-      prog: 2,
-    },
+    course_avg: 50,
+    student_avg: 70,
   };
 }
 export { fetchOverview };

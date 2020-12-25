@@ -1,23 +1,62 @@
 import React, { useState, useEffect, useContext } from "react";
+import Chart from "react-apexcharts";
 
 import { fetchOverview } from "../repo/overview";
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 
 import styles from "./overview.module.css";
 
 function Overview({ current }) {
   const {
-    state: { token },
+    state: { id: userId },
   } = useContext(AuthContext);
-  const [state, setState] = useState({ grades: {}, labs: {} });
+
+  const { setLoading } = useContext(LoadingContext);
+
+  const [state, setState] = useState({
+    course_avg: 0,
+    student_avg: 0,
+  });
+
+  const options = {
+    chart: {
+      height: 350,
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        dataLabels: {
+          name: {
+            fontSize: "22px",
+          },
+          value: {
+            fontSize: "16px",
+          },
+          total: {
+            show: true,
+            label: "Max Score",
+            formatter: function (w) {
+              return 100;
+            },
+          },
+        },
+      },
+    },
+    labels: ["Course Average", "Your Average"],
+  };
 
   useEffect(() => {
     async function temp() {
-      setState(await fetchOverview(token, current.id));
+      setState(await fetchOverview(userId, current.id));
     }
 
-    temp();
-  }, [token, current.id]);
+    if (current.id !== "") {
+      setLoading(true);
+      temp();
+      setLoading(false);
+    }
+  }, [userId, current.id, setLoading]);
 
   if (current.id === "") {
     return <></>;
@@ -26,63 +65,21 @@ function Overview({ current }) {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
-        <h2>Grades</h2>
-        <p>
-          There have been a total of{" "}
-          <span className={styles.total}>{state.grades.total}</span> assignments
-          graded
-        </p>
-        <p>
-          You have{" "}
-          <span className={styles.prog}>{state.grades.prog} Programming</span>{" "}
-          assignments graded
-        </p>
-        <p>
-          You have <span className={styles.quiz}>{state.grades.quiz} Quiz</span>{" "}
-          assignments graded
-        </p>
-        <p>
-          You have a total of{" "}
-          <span className={styles.pass}>{state.grades.pass} passing </span>
-          assignments grade
-        </p>
-        <p>
-          You have a total of{" "}
-          <span className={styles.fail}>{state.grades.fail} failing </span>
-          assignments grade
-        </p>
+        <Chart
+          options={options}
+          series={[state.course_avg, state.student_avg]}
+          type="radialBar"
+          height={350}
+        />
       </div>
-      <div className={styles.content}>
-        <h2>Labs</h2>
-        <p>
-          There are currently a total of{" "}
-          <span className={styles.total}>{state.labs.total}</span> labs assigned
-          to you
-        </p>
-        <p>
-          You have{" "}
-          <span className={styles.prog}>{state.labs.prog} Programming</span>{" "}
-          labs
-        </p>
-        <p>
-          You have <span className={styles.quiz}>{state.labs.quiz} Quiz</span>{" "}
-          labs
-        </p>
-        <p>
-          You have{" "}
-          <span className={styles.pending}>{state.labs.pending} pending</span>{" "}
-          labs
-        </p>
-        <p>
-          You have <span className={styles.late}>{state.labs.late} late</span>{" "}
-          labs
-        </p>
-        <p>
-          The teacher is{" "}
-          <span className={styles.grading}>grading {state.labs.grading} </span>
-          of your labs
-        </p>
-      </div>
+      <h4>
+        The average score among all students for this course is{" "}
+        <span style={{ color: "#259efa" }}>{state.course_avg}</span>
+      </h4>
+      <h4>
+        Your average score for this course is{" "}
+        <span style={{ color: "#25e6a4" }}>{state.student_avg}</span>
+      </h4>
     </section>
   );
 }

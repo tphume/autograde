@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { fetchSubjectList } from "../repo/subject";
-
+import { LoadingContext } from "../contexts/loading";
 import SubjectList from "../components/subjectList";
 
 import styles from "./wrapper.module.css";
 
 function Wrapper({ children, current, setCurrent }) {
+  const { setLoading } = useContext(LoadingContext);
   const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
@@ -18,10 +19,13 @@ function Wrapper({ children, current, setCurrent }) {
       }
     }
 
+    setLoading(true);
     temp();
+    setLoading(false);
 
+    // on logout
     return () => setCurrent({ id: "", name: "" });
-  }, [setCurrent]);
+  }, [setCurrent, setLoading]);
 
   return (
     <main className={styles.container}>

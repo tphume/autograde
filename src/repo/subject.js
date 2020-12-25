@@ -9,7 +9,7 @@ async function fetchSubjectList() {
 
       // parse to correct format
       const res = response.data.map((c) => {
-        switch (c.name) {
+        switch (c.name.toUpperCase()) {
           case "PYTHON":
             return { ...c, description: pythonDesc };
           case "JAVASCRIPT":

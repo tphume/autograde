@@ -45,7 +45,7 @@ function CardList({ current, api, detail, setdetail, children }) {
               <div className={styles.cardTop}>
                 <div>
                   <h3 className={styles.name}>{s.name}</h3>
-                  <h6 className={styles.id}>{s.id}</h6>
+                  <h6 className={styles.id}>{`ID: ${s.id}`}</h6>
                 </div>
                 <h5 className={styles.date}>{s.due_date}</h5>
               </div>

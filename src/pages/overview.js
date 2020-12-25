@@ -13,7 +13,10 @@ function Overview({ current }) {
 
   const { setLoading } = useContext(LoadingContext);
 
-  const [state, setState] = useState({ grades: {}, labs: {} });
+  const [state, setState] = useState({
+    course_avg: 0,
+    student_avg: 0,
+  });
 
   useEffect(() => {
     async function temp() {
@@ -31,9 +34,7 @@ function Overview({ current }) {
 
   return (
     <section className={styles.container}>
-      <div className={styles.content}>
-
-      </div>
+      <div className={styles.content}></div>
     </section>
   );
 }

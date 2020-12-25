@@ -12,17 +12,4 @@
 
 /* Styling */
 .content {
-  color: #23395a;
-}
-
-.content > h2 {
-  font-size: 1.6rem;
-  margin: 1.5rem 0;
-  text-align: center;
-}
-
-.content > p {
-  font-size: 1.2rem;
-  margin-bottom: 0.9rem;
-  color: #566c8d;
 }

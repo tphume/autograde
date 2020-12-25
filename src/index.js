@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+import SnackbarProvider from "react-simple-snackbar";
 
 import "./index.css";
 import "./contexts/auth";
@@ -13,7 +14,9 @@ ReactDOM.render(
     <Router>
       <AuthContextProvider>
         <LoadingContextProvider>
-          <App />
+          <SnackbarProvider>
+            <App />
+          </SnackbarProvider>
         </LoadingContextProvider>
       </AuthContextProvider>
     </Router>

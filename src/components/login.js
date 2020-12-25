@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useSnackbar } from "react-simple-snackbar";
 
 import { LoadingContext } from "../contexts/loading";
 import { authenticate } from "../repo/auth";
@@ -6,8 +7,15 @@ import RegisterModal from "./registerModal";
 
 import styles from "./login.module.css";
 
+const options = {
+  style: {
+    backgroundColor: "#c53a2a",
+  },
+};
+
 function Login({ dispatch }) {
   const load = useContext(LoadingContext);
+  const [openSnackbar] = useSnackbar(options);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +29,8 @@ function Login({ dispatch }) {
       const { token, user } = await authenticate(username, password);
       dispatch({ type: "LOGIN", payload: { username, token, id: user.id } });
     } catch (error) {
-      // TODO: add error displaying logic
       console.log(error);
+      openSnackbar("Authentication error", 3000);
     }
 
     load.setLoading(false);

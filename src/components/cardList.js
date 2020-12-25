@@ -60,6 +60,9 @@ function CardList({ current, api, detail, setdetail, children }) {
                   >
                     {s.assign_type}
                   </h4>
+                  {s.grade !== undefined && (
+                    <h4 className={styles.score}>Grade: {s.grade}</h4>
+                  )}
                 </div>
                 <div>
                   <button

@@ -35,7 +35,8 @@
 }
 
 .typeProg,
-.typeQuiz {
+.typeQuiz,
+.score {
   color: white;
   padding: 0.2rem 0.5rem;
   margin: 0 0.5rem 0 0;
@@ -48,6 +49,11 @@
 
 .typeQuiz {
   background-color: #f5a4d0;
+}
+
+.score {
+  background-color: #25e6a4;
+  margin-left: 3px;
 }
 
 .info,

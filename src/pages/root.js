@@ -38,25 +38,27 @@ function App() {
   }
 
   return (
-    <div className={styles.container}>
-      <SideBar dispatch={auth.dispatch} username={auth.state.username} />
-      <Wrapper current={current} setCurrent={setCurrent}>
-        <Switch>
-          <Route exact path="/">
-            <Redirect to="/overview" />
-          </Route>
-          <Route exact path="/overview">
-            <Overview current={current} />
-          </Route>
-          <Route exact path="/grades">
-            <Grades current={current} />
-          </Route>
-          <Route exact path="/labs">
-            <Labs current={current} />
-          </Route>
-        </Switch>
-      </Wrapper>
-    </div>
+    <LoadingOverlay active={load.loading} spinner text="Loading...">
+      <div className={styles.container}>
+        <SideBar dispatch={auth.dispatch} username={auth.state.username} />
+        <Wrapper current={current} setCurrent={setCurrent}>
+          <Switch>
+            <Route exact path="/">
+              <Redirect to="/overview" />
+            </Route>
+            <Route exact path="/overview">
+              <Overview current={current} />
+            </Route>
+            <Route exact path="/grades">
+              <Grades current={current} />
+            </Route>
+            <Route exact path="/labs">
+              <Labs current={current} />
+            </Route>
+          </Switch>
+        </Wrapper>
+      </div>
+    </LoadingOverlay>
   );
 }
 

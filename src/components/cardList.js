@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 import Modal from "../components/modal";
 import Info from "./info";
 
@@ -10,6 +11,8 @@ function CardList({ current, api, detail, setdetail, children }) {
   const {
     state: { token, username },
   } = useContext(AuthContext);
+
+  const { setLoading } = useContext(LoadingContext);
 
   const [state, setState] = useState([]);
   const [info, setInfo] = useState({ id: "" });
@@ -23,8 +26,10 @@ function CardList({ current, api, detail, setdetail, children }) {
       }
     }
 
+    setLoading(true);
     temp();
-  }, [token, username, current.id, api]);
+    setLoading(false);
+  }, [token, username, current.id, api, setLoading]);
 
   // Return nothing if have not selected subject
   if (current.id === "") {

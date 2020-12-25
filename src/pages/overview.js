@@ -51,9 +51,11 @@ function Overview({ current }) {
       setState(await fetchOverview(userId, current.id));
     }
 
-    setLoading(true);
-    temp();
-    setLoading(false);
+    if (current.id !== "") {
+      setLoading(true);
+      temp();
+      setLoading(false);
+    }
   }, [userId, current.id, setLoading]);
 
   if (current.id === "") {
@@ -70,6 +72,14 @@ function Overview({ current }) {
           height={350}
         />
       </div>
+      <h4>
+        The average score among all students for this course is{" "}
+        <span style={{ color: "#259efa" }}>{state.course_avg}</span>
+      </h4>
+      <h4>
+        Your average score for this course is{" "}
+        <span style={{ color: "#25e6a4" }}>{state.student_avg}</span>
+      </h4>
     </section>
   );
 }

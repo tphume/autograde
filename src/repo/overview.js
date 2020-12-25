@@ -1,9 +1,23 @@
-async function fetchOverview(userId, course_id) {
-  if (course_id === "") return { grades: {}, labs: {} };
+import axios from "axios";
 
-  if (process.env === "production") {
-    //TODO: call api endpoint to get overview of a subject
-    return;
+async function fetchOverview(userId, course_id) {
+  if (process.env.NODE_ENV === "production") {
+    const endpoint = `${process.env.REACT_APP_URL}/gradeoverview/user/${userId}/courses/${course_id}/`;
+
+    try {
+      const response = await axios.get(endpoint);
+
+      return {
+        course_avg:
+          response.data.course_avg !== null ? response.data.course_avg : 0,
+        student_avg:
+          response.data.student_average !== null
+            ? response.data.student_average
+            : 0,
+      };
+    } catch (e) {
+      throw e;
+    }
   }
 
   return {

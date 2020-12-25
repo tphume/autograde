@@ -112,7 +112,9 @@ function Prog(s, lang) {
               readOnly
             />
             <h3>Expected Output</h3>
-            <textarea style={{ width: `100%` }} readOnly>{q.answer}</textarea>
+            <textarea style={{ width: `100%` }} readOnly>
+              {q.answer}
+            </textarea>
           </li>
         );
       })}

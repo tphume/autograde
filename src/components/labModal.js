@@ -66,29 +66,33 @@ function LabModal({ lang, setdetail, detail }) {
       {state.assign_type === "Quiz" ? (
         Quiz(token, username, state, setState, { openSuccess, openError })
       ) : (
-        <></>
-      )}
+          <></>
+        )}
       {state.assign_type === "Prog" ? (
         Prog(token, username, state, setState, lang, { openSuccess, openError })
       ) : (
-        <></>
-      )}
+          <></>
+        )}
       <div className={styles.footer}>
         <button
           className={styles.submit}
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
             setLoading(true);
 
             try {
-              submitLab(token, { id: state.id, username });
+              const { message } = await submitLab(token, { id: state.id, username });
+              if (message === "previously submitted") {
+                openError("Assignment already submitted", 3000);
+              } else {
+                openSuccess("Assignment submitted", 3000);
+              }
             } catch (error) {
               openError("An error occurred", 3000);
               console.log(error);
             }
 
             setLoading(false);
-            openSuccess("Assignment submitted", 3000);
           }}
         >
           SUBMIT

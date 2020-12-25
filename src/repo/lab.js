@@ -110,7 +110,7 @@ async function fetchLabDetail(userId, { username, course_id, id }) {
       // return new format
       const res = {
         id,
-        assign_type: response.data[0].assign_type,
+        assign_type: response.data[0].assign_type === "Quiz" ? "Quiz" : "Prog",
         questions: newQuestions,
         studentAnswer: studentAnswer,
       };

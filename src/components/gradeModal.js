@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 
 import { fetchGradeDetail } from "../repo/grade";
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
@@ -14,6 +15,9 @@ function GradeModal({ lang, setdetail, detail }) {
   const {
     state: { token, username },
   } = useContext(AuthContext);
+
+  const { setLoading } = useContext(LoadingContext);
+
   const [state, setState] = useState({});
 
   useEffect(() => {
@@ -30,8 +34,10 @@ function GradeModal({ lang, setdetail, detail }) {
       }
     }
 
+    setLoading(true);
     temp();
-  }, [detail, token, username]);
+    setLoading(false);
+  }, [detail, token, username, setLoading]);
 
   return (
     <section>

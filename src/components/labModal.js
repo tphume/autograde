@@ -3,6 +3,7 @@ import AceEditor from "react-ace";
 
 import { fetchLabDetail, saveQuestion, submitLab } from "../repo/lab";
 import { AuthContext } from "../contexts/auth";
+import { LoadingContext } from "../contexts/loading";
 
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
@@ -14,6 +15,9 @@ function LabModal({ lang, setdetail, detail }) {
   const {
     state: { token, username, id: userId },
   } = useContext(AuthContext);
+
+  const { setLoading } = useContext(LoadingContext);
+
   const [state, setState] = useState({});
 
   useEffect(() => {
@@ -30,8 +34,10 @@ function LabModal({ lang, setdetail, detail }) {
       }
     }
 
+    setLoading(true);
     temp();
-  }, [detail, token, username, userId]);
+    setLoading(false);
+  }, [detail, token, username, userId, setLoading]);
 
   return (
     <section>
@@ -54,11 +60,15 @@ function LabModal({ lang, setdetail, detail }) {
           className={styles.submit}
           onClick={(e) => {
             e.preventDefault();
+            setLoading(true);
+
             try {
               submitLab(token, { course_id: detail, username });
             } catch (error) {
               console.log(error);
             }
+
+            setLoading(false);
           }}
         >
           SUBMIT

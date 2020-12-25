@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import Chart from "react-apexcharts";
 
 import { fetchOverview } from "../repo/overview";
 import { AuthContext } from "../contexts/auth";
@@ -18,6 +19,33 @@ function Overview({ current }) {
     student_avg: 0,
   });
 
+  const options = {
+    chart: {
+      height: 350,
+      type: "radialBar",
+    },
+    plotOptions: {
+      radialBar: {
+        dataLabels: {
+          name: {
+            fontSize: "22px",
+          },
+          value: {
+            fontSize: "16px",
+          },
+          total: {
+            show: true,
+            label: "Max Score",
+            formatter: function (w) {
+              return 100;
+            },
+          },
+        },
+      },
+    },
+    labels: ["Course Average", "Your Average"],
+  };
+
   useEffect(() => {
     async function temp() {
       setState(await fetchOverview(userId, current.id));
@@ -34,7 +62,14 @@ function Overview({ current }) {
 
   return (
     <section className={styles.container}>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <Chart
+          options={options}
+          series={[state.course_avg, state.student_avg]}
+          type="radialBar"
+          height={350}
+        />
+      </div>
     </section>
   );
 }

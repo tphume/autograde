@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import AceEditor from "react-ace";
+import { useSnackbar } from "react-simple-snackbar";
 
 import { fetchLabDetail, saveQuestion, submitLab } from "../repo/lab";
 import { AuthContext } from "../contexts/auth";
@@ -11,6 +12,20 @@ import "ace-builds/src-noconflict/theme-monokai";
 
 import styles from "./labModal.module.css";
 
+// styles for snackbar
+const optionsSuccess = {
+  style: {
+    backgroundColor: "#4caf50",
+  },
+};
+
+const optionsError = {
+  style: {
+    backgroundColor: "#c53a2a",
+  },
+};
+
+// main component
 function LabModal({ lang, setdetail, detail }) {
   const {
     state: { token, username, id: userId },
@@ -19,6 +34,9 @@ function LabModal({ lang, setdetail, detail }) {
   const { setLoading } = useContext(LoadingContext);
 
   const [state, setState] = useState({});
+
+  const [openSuccess] = useSnackbar(optionsSuccess);
+  const [openError] = useSnackbar(optionsError);
 
   useEffect(() => {
     async function temp() {
@@ -46,12 +64,12 @@ function LabModal({ lang, setdetail, detail }) {
         total
       </h2>
       {state.assign_type === "Quiz" ? (
-        Quiz(token, username, state, setState)
+        Quiz(token, username, state, setState, { openSuccess, openError })
       ) : (
         <></>
       )}
       {state.assign_type === "Prog" ? (
-        Prog(token, username, state, setState, lang)
+        Prog(token, username, state, setState, lang, { openSuccess, openError })
       ) : (
         <></>
       )}
@@ -81,7 +99,7 @@ function LabModal({ lang, setdetail, detail }) {
   );
 }
 
-function Quiz(token, username, state, setState) {
+function Quiz(token, username, state, setState, { openSuccess, openError }) {
   return (
     <ul className={styles.questions}>
       {state.questions.map((q, i) => {
@@ -120,8 +138,10 @@ function Quiz(token, username, state, setState) {
                     question: i + 1,
                     answer: state.studentAnswer[i].title,
                   });
+                  openSuccess("Answer saved", 3000);
                 } catch (error) {
                   console.log(error);
+                  openError("Error saving", 3000);
                 }
               }}
             >
@@ -134,7 +154,14 @@ function Quiz(token, username, state, setState) {
   );
 }
 
-function Prog(token, username, state, setState, lang) {
+function Prog(
+  token,
+  username,
+  state,
+  setState,
+  lang,
+  { openSuccess, openError }
+) {
   return (
     <ul className={styles.questions}>
       {state.questions.map((q, i) => {
@@ -165,8 +192,10 @@ function Prog(token, username, state, setState, lang) {
                     question: i + 1,
                     answer: state.studentAnswer[i].title,
                   });
+                  openSuccess("Answer saved", 3000);
                 } catch (error) {
                   console.log(error);
+                  openError("Error saving", 3000);
                 }
               }}
             >

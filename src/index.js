@@ -6,12 +6,15 @@ import "./index.css";
 import "./contexts/auth";
 import App from "./pages/root";
 import AuthContextProvider from "./contexts/auth";
+import LoadingContextProvider from "./contexts/loading";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthContextProvider>
-        <App />
+        <LoadingContextProvider>
+          <App />
+        </LoadingContextProvider>
       </AuthContextProvider>
     </Router>
   </React.StrictMode>,

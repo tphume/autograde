@@ -4,11 +4,11 @@ async function fetchStudentGradeList(userId, { username, course_id }) {
   if (course_id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = `${process.env.REACT_APP_URL}/${userId}/courses/${course_id}/gradedassignments/`;
+    const endpoint = `${process.env.REACT_APP_URL}/user/${userId}/courses/${course_id}/gradedassignments/`;
 
     try {
       const response = await axios.get(endpoint);
-      const res = response.map((l) => {
+      const res = response.data.map((l) => {
         return {
           id: l.assignment.id, // use assignment id instead
           name: l.assignment.name,

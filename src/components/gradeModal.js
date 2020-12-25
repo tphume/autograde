@@ -61,9 +61,25 @@ function Quiz(s) {
           <li key={i} className={styles.item}>
             <h2>{q.question}</h2>
             <ol className={styles.choices}>
-              {q.choices.map((c, i) => (
-                <li key={i}>{c}</li>
-              ))}
+              {q.choices.map((c, i) => {
+                if (c === q.answer) {
+                  // for correct choice
+                  return (
+                    <li key={i} style={{ color: "#4caf50" }}>
+                      {c}
+                    </li>
+                  );
+                } else if (c === q.studentanswer) {
+                  // if user answer incorrectly
+                  return (
+                    <li key={i} style={{ color: "#c53a2a" }}>
+                      {c}
+                    </li>
+                  );
+                }
+
+                return <li key={i}>{c}</li>;
+              })}
             </ol>
             <h3
               className={

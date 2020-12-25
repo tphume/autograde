@@ -157,9 +157,9 @@ async function fetchGradeDetail(userId, { username, course_id, id }) {
     questions: [
       {
         question: "This is just an example question?",
-        choices: ["someanswer", "someanswer", "someanswer", "someanswer"],
-        studentanswer: "someanswer",
-        answer: "someanswer",
+        choices: ["A", "B", "C", "D"],
+        studentanswer: "C",
+        answer: "A",
       },
       {
         question: "This is just an example question?",

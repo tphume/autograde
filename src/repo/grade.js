@@ -98,22 +98,24 @@ async function fetchGradeDetail(userId, { username, course_id, id }) {
   if (id === "") return [];
 
   if (process.env.NODE_ENV === "production") {
-    const endpoint = `${process.env.REACT_APP_URL}/user/${userId}/courses/${course_id}/gradedassignments/${id}`;
+    const endpoint = `${process.env.REACT_APP_URL}/courses/${course_id}/assignments/${id}/`;
 
     try {
       const response = await axios.get(endpoint);
-      const res = response.data.map((d) => {
-        // get correct student answer first
-        const studentanswer = d.questions.studentanswer.find(
-          (a) => a.student === userId
-        );
+
+      const question = response.data[0].questions.map((q) => {
+        const studentanswer = q.studentanswer.find((a) => a.student === userId);
+
         return {
-          ...d,
+          ...q,
           studentanswer: studentanswer !== undefined ? studentanswer.title : "",
         };
       });
 
-      return res;
+      const assign_type =
+        response.data[0].assign_type !== "Quiz" ? "Prog" : "Quiz";
+
+      return { ...response.data[0], questions: question, assign_type };
     } catch (e) {
       throw e;
     }

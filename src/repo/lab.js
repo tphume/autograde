@@ -90,7 +90,7 @@ async function fetchLabDetail(userId, { username, course_id, id }) {
       // parses response here into better format
       // for answer
       const studentAnswer = response.data[0].questions.map((q) => {
-        const answer = q.studentanswer.find((a) => a.id === id);
+        const answer = q.studentanswer.find((a) => a.id === userId);
         return answer !== undefined ? answer : { title: "" };
       });
 

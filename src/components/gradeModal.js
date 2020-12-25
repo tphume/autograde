@@ -59,7 +59,7 @@ function Quiz(s) {
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>{q.question}</h2>
+            <h2>{`[${i + 1}] ${q.question}`}</h2>
             <ol className={styles.choices}>
               {q.choices.map((c, i) => {
                 if (c === q.answer) {
@@ -101,16 +101,18 @@ function Prog(s, lang) {
       {s.questions.map((q, i) => {
         return (
           <li key={i} className={styles.item}>
-            <h2>{q.question}</h2>
+            <h2>{`[${i + 1}] ${q.question}`}</h2>
             <AceEditor
               name={i.toString()}
               mode={lang}
               theme="monokai"
               value={q.studentanswer}
               fontSize={14}
-              style={{ width: `100%`, margin: `1rem 0` }}
+              style={{ width: `50%`, margin: `1rem 0` }}
               readOnly
             />
+            <h3>Expected Output</h3>
+            <textarea style={{ width: `100%` }}>{q.answer}</textarea>
           </li>
         );
       })}

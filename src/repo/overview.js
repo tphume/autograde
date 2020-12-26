@@ -9,10 +9,12 @@ async function fetchOverview(userId, course_id) {
 
       return {
         course_avg:
-          response.data.course_avg !== null ? response.data.course_avg : 0,
+          response.data.course_avg !== null
+            ? Math.round(response.data.course_avg)
+            : 0,
         student_avg:
           response.data.student_average !== null
-            ? response.data.student_average
+            ? Math.round(response.data.student_average)
             : 0,
       };
     } catch (e) {

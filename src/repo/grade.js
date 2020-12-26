@@ -12,7 +12,7 @@ async function fetchStudentGradeList(userId, { username, course_id }) {
         return {
           id: l.assignment.id, // use assignment id instead
           name: l.assignment.name,
-          grade: l.grade,
+          grade: Math.round(l.grade),
           assign_type: l.assignment.assign_type,
           due_date: l.assignment.due_date,
           description: l.assignment.description,

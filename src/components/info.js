@@ -11,10 +11,28 @@ function Info({ info, setinfo }) {
     return <></>;
   }
 
+  const renderers = {
+    //This custom renderer changes how images are rendered
+    //we use it to constrain the max width of an image to its container
+    image: ({
+      alt,
+      src,
+      title,
+    }: {
+      alt?: string,
+      src?: string,
+      title?: string,
+    }) => <img alt={alt} src={src} title={title} style={{ maxWidth: 873 }} />,
+  };
+
   return (
     <Modal>
       <div className={styles.markdownWrapper}>
-        <ReactMarkdown plugins={[gfm]} children={info.description} />
+        <ReactMarkdown
+          plugins={[gfm]}
+          children={info.description}
+          renderers={renderers}
+        />
       </div>
       <div className={styles.footer}>
         <button className={styles.exit} onClick={() => setinfo({ id: "" })}>

@@ -49,6 +49,9 @@ const pythonDesc = `
 - [Usecase](#usecase)
 - [Real world example](#example)
 \n &nbsp;\n
+
+![](https://coursereport-s3-production.global.ssl.fastly.net/rich/rich_files/rich_files/5406/original/what-is-python-programming-infographic.png)
+
 ## Overview
 **Python** is a strong language for beginners.
 There are many resources available for programmers of all levels, 
@@ -96,7 +99,7 @@ const javascriptDesc = `
 - [Usecase](#usecase)
 - [Real world example](#example)
 \n &nbsp;\n
-## Overviews
+## Overview
 JavaScript is among the most powerful and flexible programming languages of the web. 
 It powers the dynamic behavior on most websites, including this one.
 \n &nbsp;\n
@@ -111,6 +114,9 @@ C and Java, JavaScript is generally easier to learn. When we say ‘easier’, w
 can go from being a JavaScript novice to someone who can actually make a living writing professional, 
 high quality JavaScript code. So, in that sense, it’s more accessible than some other languages like C and Java.
 \n &nbsp;\n
+
+![](https://brytdesigns.com/wp-content/uploads/2019/12/html_css_javascript_infographic.png)
+
 ----
 \n &nbsp;\n
 ## Usecase
